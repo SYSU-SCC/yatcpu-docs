@@ -8,6 +8,7 @@ nav:
   - 实验: 
     - 简介: "lab/README.md"
     - 实验一: "lab/labs1.md"
+  - 里程碑: "milestone/README.md"
   - Faqs: "faq/README.md"
 
 site_name: YatCPU documentation
