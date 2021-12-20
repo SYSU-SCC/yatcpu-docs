@@ -1,0 +1,57 @@
+nav:
+  - 前言: "README.md"
+  - Quick Start:
+    - 开发环境: "quick_start/Environment.md"
+    - 快速测试: "quick_start/Test.md"
+    - 写板验证: "quick_start/Program.md"
+  - 架构: "arch/README.md"
+  - 实验: "lab/README.md"
+    - 实验一: "lab/labs1.md"
+  - Faqs: "faq/README.md"
+
+site_name: YatCPU documentation
+site_url: https://scc.sysu.tech/YatCPU-docs/
+repo_url: https://github.com/SYSU-SCC/YatCPU/
+copyright: |
+  <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+theme:
+  icon:
+    repo: fontawesome/brands/github
+  name: material
+  custom_dir: docs/overrides
+  language: zh
+  features:
+    - navigation.top
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-night
+        name: 夜间模式
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: 白天模式
+plugins:
+  - search
+  - git-authors
+  - git-revision-date-localized:
+      type: iso_datetime
+      timezone: Asia/Shanghai
+markdown_extensions:
+  - pymdownx.highlight
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - pymdownx.keys
+  - pymdownx.snippets
+  - pymdownx.inlinehilite
+  - footnotes
+  - admonition
+  - toc:
+      permalink: true
+      slugify: !!python/name:pymdownx.slugs.uslugify
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
