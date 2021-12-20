@@ -5,7 +5,8 @@ nav:
     - 快速测试: "quick_start/Test.md"
     - 写板验证: "quick_start/Program.md"
   - 架构: "arch/README.md"
-  - 实验: "lab/README.md"
+  - 实验: 
+    - 简介: "lab/README.md"
     - 实验一: "lab/labs1.md"
   - Faqs: "faq/README.md"
 
