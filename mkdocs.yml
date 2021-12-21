@@ -6,7 +6,7 @@ nav:
     - 写板验证: "getting-started/program-device.md"
   - 架构: "arch/README.md"
   - 实验: 
-    - 简介: "lab/README.md"
+    - 简介: "labs/README.md"
     - 实验一: "labs/lab1.md"
   - 里程碑: "milestone/README.md"
   - FAQ: "faq/README.md"
