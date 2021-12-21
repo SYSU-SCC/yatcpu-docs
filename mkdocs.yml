@@ -9,7 +9,7 @@ nav:
     - 简介: "lab/README.md"
     - 实验一: "labs/lab1.md"
   - 里程碑: "milestone/README.md"
-  - Faqs: "faq/README.md"
+  - FAQ: "faq/README.md"
 
 site_name: YatCPU documentation
 site_url: https://scc.sysu.tech/YatCPU-docs/
