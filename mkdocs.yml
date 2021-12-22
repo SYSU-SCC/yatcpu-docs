@@ -9,7 +9,7 @@ nav:
     - 简介: "labs/README.md"
     - 实验一: "labs/lab1.md"
   - 里程碑: "milestone/README.md"
-  - FAQ: "faq/README.md"
+  - FAQ: "faq/index.md"
   - 参考资料: "references/index.md"
 
 site_name: YatCPU documentation
@@ -50,8 +50,13 @@ markdown_extensions:
   - pymdownx.keys
   - pymdownx.snippets
   - pymdownx.inlinehilite
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.mark
+  - pymdownx.tilde
   - footnotes
   - admonition
+  - def_list
   - toc:
       permalink: true
       slugify: !!python/name:pymdownx.slugs.uslugify
