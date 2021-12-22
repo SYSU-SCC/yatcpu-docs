@@ -8,7 +8,7 @@ By: [:material-github: wu-kan](https://github.com/wu-kan)、[:material-github: h
 - Debian 11
 - Windows Subsystem for Linux 1 (WSL1)
 
-???+warning "不支持 macOS"
+!!! warning "不支持 macOS"
     由于 **Vivado 无法在 macOS 上安装**，且其他工具未在 macOS 上测试过，所以如果你使用的是 macOS，请通过虚拟机或使用其他设备等方式使用上述的操作系统进行实验。
 
 ## Windows 配置方法
