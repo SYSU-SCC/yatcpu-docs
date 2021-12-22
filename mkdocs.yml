@@ -1,14 +1,15 @@
 nav:
-  - 前言: "README.md"
+  - 前言: "index.md"
+  - 绪论: "introduction.md"
   - 实验环境准备:
     - 开发环境: "getting-started/environment.md"
     - 快速测试: "getting-started/test.md"
     - 写板验证: "getting-started/program-device.md"
-  - 架构: "arch/README.md"
+  - 架构: "arch/index.md"
   - 实验: 
-    - 简介: "labs/README.md"
+    - 简介: "labs/index.md"
     - 实验一: "labs/lab1.md"
-  - 里程碑: "milestone/README.md"
+  - 里程碑: "milestone/index.md"
   - FAQ: "faq/index.md"
   - 参考资料: "references/index.md"
 
