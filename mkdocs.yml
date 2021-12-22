@@ -10,6 +10,7 @@ nav:
     - 实验一: "labs/lab1.md"
   - 里程碑: "milestone/README.md"
   - FAQ: "faq/README.md"
+  - 参考资料: "references/index.md"
 
 site_name: YatCPU documentation
 site_url: https://scc.sysu.tech/YatCPU-docs/
