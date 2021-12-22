@@ -17,14 +17,14 @@ cd vivado
 
 ### 使用 USB 方式烧板
 
-需要一个 Fat32 格式的 U 盘。
+需要一个 FAT32 格式的 U 盘。
 
 ### 在 Windows 下烧板
 
-由于 WSL 下可以调用 powershell，我们可以回到 Windows 下烧板。Windows 下可以只装 Vivado Lab，和完整版的 Vivado 相比只有烧板功能，精简很多，安装包体积约为 1 GB。
+由于 WSL 下可以调用 `powershell`，我们可以回到 Windows 下烧板。Windows 下可以只装 Vivado Lab，和完整版的 Vivado 相比只有烧板功能，精简很多，安装包体积约为 1 GB。
 
 ```bash
-# 假设你在 vivado 目录下，同时 Windows 下 Vivado_Lab 安装在 `C:\Xilinx`
+# 假设你在本项目的 vivado 目录下，同时 Windows 下 Vivado Lab 2020.1 安装在 `C:\Xilinx\Vivado_Lab\2020.1` 目录下
 powershell.exe 'C:\Xilinx\Vivado_Lab\2020.1\bin\vivado_lab.bat -mode batch -source .\program_device.tcl'
 ```
 
