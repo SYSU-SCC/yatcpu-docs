@@ -13,13 +13,21 @@ By: [:material-github: wu-kan](https://github.com/wu-kan)、[:material-github: h
 
 ## Windows 配置方法
 
+### 安装 Intellij IDEA
+
+使用 Intellij IDEA 配置开发环境比较简单，而且也经过了测试，所以，我们推荐在 Windows 上直接使用 Intellij IDEA 来设置开发环境。
+
+可以先[安装 JetBrains Toolbox](https://www.jetbrains.com/toolbox-app/)，然后通过 JetBrains Toolbox 一键安装 Intellij IDEA Community Edition。
+
+或者[到 JetBrains 官方网站下载 Intellij IDEA](https://www.jetbrains.com/idea/download/#section=windows)，下载免费的 Commnunity Edition 即可。
+
 ### 安装 Vivado
 
 中山大学组成原理实验课使用的 [Basys3](https://www.stepfpga.com/doc/_media/basys3_ss.pdf) 实验板型号为 XC7A35T，需要 Xilinx 的工具进行综合实现以及烧板。这里安装 `Vivado HL WebPACK` 即可，不需要许可或激活许可密钥。
 
 经过测试且可用的 Vivado 版本为 2020.1。更新或更旧的版本理论上可以使用，但没有经过测试。
 
-安装包体积较大，**推荐使用下载工具如迅雷、Free Download Manager 下载**。
+安装包体积较大，**推荐使用带断点续传功能的下载工具如迅雷、Free Download Manager 下载**。
 
 如果你在**中山大学校园网内**下载 Vivado 2020.1 安装包，可以使用我们提供的镜像：[https://mirrors.matrix.moe/software/Xilinx_Unified_2020.1_0602_1208.tar](https://mirrors.matrix.moe/software/Xilinx_Unified_2020.1_0602_1208.tar)。
 
