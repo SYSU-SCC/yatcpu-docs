@@ -31,11 +31,13 @@ theme:
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
+      primary: teal
       toggle:
         icon: material/weather-night
         name: 夜间模式
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
+      primary: green
       toggle:
         icon: material/weather-sunny
         name: 白天模式
