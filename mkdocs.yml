@@ -18,7 +18,7 @@ nav:
   - FAQ: "faq/index.md"
   - 参考资料: "references/index.md"
 
-site_name: YatCPU documentation
+site_name: YatCPU 实验文档
 site_url: https://scc.sysu.tech/YatCPU-docs/
 repo_url: https://github.com/SYSU-SCC/YatCPU/
 copyright: |
