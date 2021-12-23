@@ -8,7 +8,8 @@ By: [:material-github: wu-kan](https://github.com/wu-kan)
 
 ```bash
 cd vivado
-~/Xilinx/Vivado/2020.1/bin/vivado -mode batch -source ./generate_bitstream.tcl
+~/Xilinx/Vivado/2020.1/bin/vivado -mode batch \
+    -source ./generate_bitstream.tcl
 ```
 
 ## 烧板

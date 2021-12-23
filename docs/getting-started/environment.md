@@ -47,7 +47,13 @@ By: [:material-github: wu-kan](https://github.com/wu-kan)、[:material-github: h
 本实验将会使用到以下工具，除 sbt 外，可以通过下面提供的命令一键安装：
 
 ```bash
-sudo apt install -y git gcc-riscv64-unknown-elf make gnupg2 scala libtinfo5 coreutils
+sudo apt install -y git \
+    gcc-riscv64-unknown-elf \
+    make \
+    gnupg2 \
+    scala \
+    libtinfo5 \
+    coreutils
 ```
 
 |名称|说明|
@@ -66,8 +72,10 @@ sudo apt install -y git gcc-riscv64-unknown-elf make gnupg2 scala libtinfo5 core
 [sbt](https://packages.debian.org/sid/sbt) 目前仍然在 Debian 的[不稳定](https://www.debian.org/releases/sid/)版本中。对于不希望使用 sid 系统的同学，可以按照[文档](https://www.scala-sbt.org/1.x/docs/zh-cn/Installing-sbt-on-Linux.html#Ubuntu%E5%92%8C%E5%85%B6%E4%BB%96%E5%9F%BA%E4%BA%8EDebian%E7%9A%84%E5%8F%91%E8%A1%8C%E7%89%88)的指示下载安装。
 
 ```bash
-echo "deb https://repo.scala-sbt.org/scalasbt/debian all main" | sudo tee /etc/apt/sources.list.d/sbt.list
-echo "deb https://repo.scala-sbt.org/scalasbt/debian /" | sudo tee /etc/apt/sources.list.d/sbt_old.list
+echo "deb https://repo.scala-sbt.org/scalasbt/debian all main" | sudo tee \
+    /etc/apt/sources.list.d/sbt.list
+echo "deb https://repo.scala-sbt.org/scalasbt/debian /" | sudo tee \
+    /etc/apt/sources.list.d/sbt_old.list
 curl -sL "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x2EE0EA64E40A89B84B2DF73499E82A75642AC823" | sudo apt-key add
 sudo apt update
 sudo apt install sbt
@@ -116,7 +124,8 @@ cd Xilinx_Unified_2020.1_0602_1208
 随后再次执行下述指令，安装 `Vivado HL WebPACK`。
 
 ```bash
-./xsetup -a XilinxEULA,3rdPartyEULA,WebTalkTerms -b Install -c ~/.Xilinx/install_config.txt -l ~/Xilinx
+./xsetup -a XilinxEULA,3rdPartyEULA,WebTalkTerms -b Install \
+    -c ~/.Xilinx/install_config.txt -l ~/Xilinx
 ```
 
 其中 `~/Xilinx` 是安装目录，可以自行定义。

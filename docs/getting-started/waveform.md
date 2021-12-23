@@ -10,7 +10,8 @@ By: [:material-github: howardlau1999](https://github.com/howardlau1999)
 
 ```bash
 cd vivado
-~/Xilinx/Vivado/2020.1/bin/vivado -mode batch -source ./run_simulation.tcl
+~/Xilinx/Vivado/2020.1/bin/vivado -mode batch \
+    -source ./run_simulation.tcl
 ```
 
 ## 使用 GTKWave 查看 VCD 格式波形
