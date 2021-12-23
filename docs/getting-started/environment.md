@@ -30,7 +30,7 @@ By: [:material-github: wu-kan](https://github.com/wu-kan)、[:material-github: h
 
 ![images/idea-0.png](images/idea-0.png)
 
-按快捷键 Ctrl+Alt+S 打开设置。
+按快捷键 ++ctrl+alt+s++ 打开设置。
 
 ![images/idea-1.png](images/idea-1.png)
 
@@ -60,7 +60,7 @@ By: [:material-github: wu-kan](https://github.com/wu-kan)、[:material-github: h
 
 点下载，在跳出来的窗口中选择我们项目使用的 2.12.13 版本。
 
-回到“添加 Scala 支持”窗口，在“使用库”中选中我们刚才下载的版本，确定。
+回到“添加 Scala 支持”窗口，在“使用库”中选中我们刚才下载的版本，点击确定。最后记得点击“加载 sbt 项目”加载项目配置。
 
 大功告成！
 
