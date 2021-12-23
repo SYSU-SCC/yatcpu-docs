@@ -15,4 +15,14 @@ cd vivado
 
 ![gtkwave-windows](images/gtkwave.png)
 
-你也可以打开 Vivado 来查看波形。
+你也可以打开 Vivado 来查看波形，Vivado 支持的格式为 `.wdb`，路径是 `vivado/riscv-basys3/riscv-basys3.sim/sim_1/behav/xsim/test_behav.wdb`。在启动 Vivado 后，选择菜单栏的 "Flow->Open Static Simulation..."，选择这个文件，然后点击 "Open" 按钮。
+
+![vivado-1](images/vivado-1.png)
+
+![vivado-2](images/vivado-2.png)
+
+打开后，在左侧的窗口找到你感兴趣的模块，右键，选择 "Add to Wave Window"，即可在波形窗口查看波形。
+
+![vivado-3](images/vivado-3.png)
+
+![vivado-4](images/vivado-4.png)
