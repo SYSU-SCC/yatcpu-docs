@@ -6,20 +6,63 @@ By: [:material-github: wu-kan](https://github.com/wu-kan)、[:material-github: h
 
 - Windows 10
 - Debian 11
-- Windows Subsystem for Linux 1 (WSL1)
+- Debian 11, Windows Subsystem for Linux (WSL)
 
 !!! warning "不支持 macOS"
     由于 **Vivado 无法在 macOS 上安装**，且其他工具未在 macOS 上测试过，所以如果你使用的是 macOS，请通过虚拟机或使用其他设备等方式使用上述的操作系统进行实验。
 
+我们提供两种风格的开发环境配置方案：
+
+1. 对于喜欢使用 IDE 集成环境的同学，推荐使用 Windows 配置方法。
+2. 对于喜欢使用终端+代码编辑器组合的同学，推荐使用 Linux/WSL 配置方法。
+
 ## Windows 配置方法
 
-### 安装 Intellij IDEA
+### 安装 Intellij IDEA + 插件
 
 使用 Intellij IDEA 配置开发环境比较简单，而且也经过了测试，所以，我们推荐在 Windows 上直接使用 Intellij IDEA 来设置开发环境。
 
 可以先[安装 JetBrains Toolbox](https://www.jetbrains.com/toolbox-app/)，然后通过 JetBrains Toolbox 一键安装 Intellij IDEA Community Edition。
 
 或者[到 JetBrains 官方网站下载 Intellij IDEA](https://www.jetbrains.com/idea/download/#section=windows)，下载免费的 Commnunity Edition 即可。
+
+使用 Intellij IDEA 打开当前项目根目录。
+
+![images/idea-0.png](images/idea-0.png)
+
+按快捷键 Ctrl+Alt+S 打开设置。
+
+![images/idea-1.png](images/idea-1.png)
+
+选择 Plugins，搜索并安装 Scala 插件。
+
+![images/idea-2.png](images/idea-2.png)
+
+你还可以顺便安装一个中文插件。安装完成后，点击 Restart IDE 重启 IDE。
+
+![images/idea-3.png](images/idea-3.png)
+
+点击图上的设置 JDK，选择下载 JDK。
+
+![images/idea-4.png](images/idea-4.png)
+
+下载。
+
+![images/idea-5.png](images/idea-5.png)
+
+再选择设置 Scala SDK。
+
+![images/idea-6.png](images/idea-6.png)
+
+选择创建。
+
+![images/idea-7.png](images/idea-7.png)
+
+点下载，在跳出来的窗口中选择我们项目使用的 2.12.13 版本。
+
+回到“添加 Scala 支持”窗口，在“使用库”中选中我们刚才下载的版本，确定。
+
+大功告成！
 
 ### 安装 Vivado
 
@@ -29,16 +72,16 @@ By: [:material-github: wu-kan](https://github.com/wu-kan)、[:material-github: h
 
 安装包体积较大，**推荐使用带断点续传功能的下载工具如迅雷、Free Download Manager 下载**。
 
-如果你在**中山大学校园网内**下载 Vivado 2020.1 安装包，可以使用我们提供的镜像：[https://mirrors.matrix.moe/software/Xilinx_Unified_2020.1_0602_1208.tar](https://mirrors.matrix.moe/software/Xilinx_Unified_2020.1_0602_1208.tar)。
+如果你在**中山大学校园网内**下载 Vivado 2020.1 安装包，可以使用我们提供的镜像：<https://mirrors.matrix.moe/software/Xilinx_Unified_2020.1_0602_1208.tar>。
 
-也可以在 Xilinx 的官网下载：[https://china.xilinx.com/support/download/index.html/content/xilinx/zh/downloadNav/vivado-design-tools/archive.html](https://china.xilinx.com/support/download/index.html/content/xilinx/zh/downloadNav/vivado-design-tools/archive.html)
+也可以在 Xilinx 的官网下载：<https://china.xilinx.com/support/download/index.html/content/xilinx/zh/downloadNav/vivado-design-tools/archive.html>
 
 ???+warning "预留足够的硬盘空间"
     Vivado 2020.1 安装包体积较大，约为 36 GB，且后续安装也要使用大量硬盘空间。请预留好**至少 100 GB 的硬盘空间**。
 
 ## Linux/WSL1 配置方法
 
-下面介绍如何在 Linux 或 WSL （Windows Subsystem for Linux）环境中搭建本实验的开发环境。[这里](https://liuhaohua.com/server-programming-guide/appendix/build-env/)给出搭建相关环境的一个参照。
+下面介绍如何在 Linux 或 WSL(Windows Subsystem for Linux) 环境中搭建本实验的开发环境。[这里](https://liuhaohua.com/server-programming-guide/appendix/build-env/)给出搭建相关环境的一个参照。
 
 这里假设你使用的 Linux 或 WSL 系统是 Debian 11。对于使用其他 Linux 系统的同学，操作是类似的，相信你有足够的能力参考下面的指令搭建环境。
 
@@ -56,16 +99,16 @@ sudo apt install -y git \
     coreutils
 ```
 
-|名称|说明|
-|---|---|
-|git|代码版本管理工具|
-|gcc-riscv64-unknown-elf|用于编译生成 RISC-V 可执行二进制文件|
-|make|用于执行 Makefile|
-|gnupg2|签名验证工具|
-|scala|本项目的语言编译器|
-|sbt|Scala 包管理器|
-|libtinfo5|Vivado 启动依赖|
-|md5sum|安装包校验工具|
+| 名称                    | 说明                                 |
+| ----------------------- | ------------------------------------ |
+| git                     | 代码版本管理工具                     |
+| gcc-riscv64-unknown-elf | 用于编译生成 RISC-V 可执行二进制文件 |
+| make                    | 用于执行 Makefile                    |
+| gnupg2                  | 签名验证工具                         |
+| scala                   | 本项目的语言编译器                   |
+| sbt                     | Scala 包管理器                       |
+| libtinfo5               | Vivado 启动依赖                      |
+| md5sum                  | 安装包校验工具                       |
 
 ### 安装 sbt 包管理器
 
@@ -102,16 +145,18 @@ curl -O https://mirrors.matrix.moe/software/Xilinx_Unified_2020.1_0602_1208.tar.
 ```
 
 由于文件较大，为了校验传输过程中是否发生错误，请在下载完成后验证安装包的 MD5 值。使用以下命令计算文件的 MD5 值：
+
 ```bash
 md5sum Xilinx_Unified_2020.1_0602_1208.tar.gz
 ```
+
 命令应当输出以下内容：
-```
+
+```bash
 b018f7b331ab0446137756156ff944d9  Xilinx_Unified_2020.1_0602_1208.tar.gz
 ```
-如果不一致，请重新下载。
 
-校验通过后，使用下面的命令解压安装包并生成安装配置文件：
+如果不一致，请重新下载。校验通过后，使用下面的命令解压安装包并生成安装配置文件：
 
 ```bash
 tar -zxf Xilinx_Unified_2020.1_0602_1208.tar.gz

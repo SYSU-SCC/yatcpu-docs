@@ -53,18 +53,18 @@ YatCPU (**Y**et **a**nother **t**oy CPU) 是一款即将开源的教学用 RISC-
 - [x] 全 Linux/WSL 开发环境
     - [x] 自动化评测
     - [x] 自动化烧板
-- [x] 运行在高校数电教学常用的 Basys3 开发板上
-    - [ ] 移植到更多的开发板，如 Zynq 等
+- [x] 支持在高校数电教学常用的 [Basys3](https://digilent.com/reference/programmable-logic/basys-3/start) 开发板上
+    - [ ] 移植到更多的开发板，如 [ZedBoard](https://digilent.com/reference/programmable-logic/zedboard/start) 等
 - [x] VGA 输出，显示更多的调试信息
 - [x] 运行 C 语言编译的程序
     - [ ] 通过 RISC-V 指令兼容性测试
     - [ ] 运行 CoreMark
 - [ ] 启动操作系统
-    - [ ] FreeRTOS
-    - [ ] Yat-sen OS
-    - [ ] HarmonyOS
-    - [ ] Linux Core
-    - [ ] Debian
+    - [ ] [FreeRTOS](https://www.freertos.org/)
+    - [ ] [Yat-sen OS](https://github.com/NelsonCheung-cn/yatsenos-riscv)
+    - [ ] [OpenHarmony LiteOS-A](https://gitee.com/openharmony/kernel_liteos_a)
+    - [ ] [Linux Kernel](https://www.linux.org/)
+    - [ ] [Debian](https://www.debian.org/)
 - [ ] 完善且适用于零基础新生的文档
 - [ ] 基于 YatCPU 设计更多体系结构实验
     - [ ] 缓存一致性？

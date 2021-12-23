@@ -1,4 +1,4 @@
-# Yat-CPU-Docs
+# YatCPU-docs
 
 在线阅读：<https://scc.sysu.tech/YatCPU-docs/>
 
