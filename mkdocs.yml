@@ -7,7 +7,10 @@ nav:
     - 快速测试: "getting-started/test.md"
     - 波形仿真: "getting-started/waveform.md"
     - 烧板验证: "getting-started/program-device.md"
-  - 处理器架构: "arch/index.md"
+  - 预备知识:
+    - 简介: "tutorial/index.md"
+    - 处理器架构: "tutorial/arch.md"
+    - 编译与链接: "tutorial/compile-and-link.md"
   - 实验: 
     - 简介: "labs/index.md"
     - 实验一: "labs/lab1.md"
