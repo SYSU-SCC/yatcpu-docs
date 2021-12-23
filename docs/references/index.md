@@ -4,4 +4,6 @@ RISC-V 指令手册卷 I（非特权指令）：[https://github.com/riscv/riscv-
 
 RISC-V 指令手册卷 II（特权指令）：[https://github.com/riscv/riscv-isa-manual/releases/download/Priv-v1.12/riscv-privileged-20211203.pdf](https://github.com/riscv/riscv-isa-manual/releases/download/Priv-v1.12/riscv-privileged-20211203.pdf)
 
+Chisel 语言在线互动教程：[https://mybinder.org/v2/gh/freechipsproject/chisel-bootcamp/master](https://mybinder.org/v2/gh/freechipsproject/chisel-bootcamp/master)
+
 Vivado 2020.1 Tcl 脚本指令手册：[https://www.xilinx.com/support/documentation/sw_manuals/xilinx2020_1/ug835-vivado-tcl-commands.pdf](https://www.xilinx.com/support/documentation/sw_manuals/xilinx2020_1/ug835-vivado-tcl-commands.pdf)
