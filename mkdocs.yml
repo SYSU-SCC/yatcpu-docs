@@ -11,6 +11,8 @@ nav:
     - 简介: "tutorial/index.md"
     - 处理器架构: "tutorial/arch.md"
     - 编译与链接: "tutorial/compile-and-link.md"
+    - 中断和异常: "tutorial/interrupt-and-exception.md"
+    - 总线: "tutorial/bus.md"
   - 实验: 
     - 简介: "labs/index.md"
     - 实验一: "labs/lab1.md"
