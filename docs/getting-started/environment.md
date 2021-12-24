@@ -72,11 +72,11 @@ By: [:material-github: wu-kan](https://github.com/wu-kan)、[:material-github: h
 
 安装包体积较大，**推荐使用带断点续传功能的下载工具如迅雷、Free Download Manager 下载**。
 
-如果你在**中山大学校园网内**下载 Vivado 2020.1 安装包，可以使用我们提供的镜像：<https://mirrors.matrix.moe/software/Xilinx_Unified_2020.1_0602_1208.tar>。
+如果你在**中山大学校园网内**下载 Vivado 2020.1 安装包，可以使用我们提供的镜像：[点此下载](https://mirrors.matrix.moe/software/Xilinx_Unified_2020.1_0602_1208.tar)。
 
-也可以在 Xilinx 的官网下载：<https://china.xilinx.com/support/download/index.html/content/xilinx/zh/downloadNav/vivado-design-tools/archive.html>
+也可以在 Xilinx 的官网下载：[点击跳转](https://china.xilinx.com/support/download/index.html/content/xilinx/zh/downloadNav/vivado-design-tools/archive.html)。
 
-???+warning "预留足够的硬盘空间"
+!!! warning "预留足够的硬盘空间"
     Vivado 2020.1 安装包体积较大，约为 36 GB，且后续安装也要使用大量硬盘空间。请预留好**至少 100 GB 的硬盘空间**。
 
 ## Linux/WSL1 配置方法
@@ -132,7 +132,7 @@ sudo apt install sbt
 
 中山大学校园网内下载 Vivado 2020.1 安装包，可以使用我们提供的镜像。
 
-???+warning "预留足够的硬盘空间"
+!!! warning "预留足够的硬盘空间"
     Vivado 2020.1 安装包体积较大，约为 36 GB，且后续安装也要使用大量硬盘空间。请预留好**至少 100 GB 的硬盘空间**。
 
 下面是使用 `curl` 下载校园网安装包镜像的命令，你也可以使用其他方式下载。

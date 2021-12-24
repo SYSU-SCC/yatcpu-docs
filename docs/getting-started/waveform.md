@@ -16,7 +16,7 @@ cd vivado
 
 ## 使用 GTKWave 查看 VCD 格式波形
 
-执行完成后，应该会生成 `vivado/riscv-basys3/riscv-basys3.sim/sim_1/behav/xsim/dump.vcd` 波形文件。如果你的操作系统带有 GUI 图形界面，可以使用 [GTKWave](http://gtkwave.sourceforge.net/) 打开这个文件查看波形。
+执行完成后，应该会生成 `vivado/riscv-basys3/riscv-basys3.sim/sim_1/behav/xsim/dump.vcd` 波形文件。如果你的操作系统带有 GUI 图形界面，可以使用 [GTKWave](http://gtkwave.sourceforge.net/)，点击 "File->Open New Tab..." 打开这个文件查看波形。
 
 ![gtkwave-windows](images/gtkwave.png)
 
