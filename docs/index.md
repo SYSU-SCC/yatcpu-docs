@@ -75,5 +75,6 @@ YatCPU (**Y**et **a**nother **t**oy CPU) 是一款即将开源的教学用 RISC-
     - [ ] 分支预测
     - [ ] 多核
     - [ ] 缓存一致性
+    - [ ] 向量处理器
 
 最后要感谢[广爷](http://cse.sysu.edu.cn/content/5357)和他的同学们，可以让我在课上“胡作非为”。还要由衷感谢 [:material-github: howardlau1999](https://github.com/howardlau1999)，支撑了 YatCPU 前期开发的绝大部份工作量（毫不夸张地说，白白在三天内完成了我原计划一个月的工作量）。
