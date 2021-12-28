@@ -44,7 +44,9 @@ YatCPU (**Y**et **a**nother **t**oy CPU) 是一款即将开源的教学用 RISC-
 
 ## 未来与展望
 
-基于上述思考，我们决定开发一款尽可能简单的 RISC-V CPU（类似于 [tinyriscv](https://gitee.com/liangkangnan/tinyriscv/)），而又要尽可能多地扩展其功能性（倒并不是说完全不考虑性能和节能了，只是不是当前的开发重点），并在此之上设计更多有趣且能加深同学们对体系结构理解的实验。截至目前为止，YatCPU 包含或计划包含以下特征：
+基于上述思考，我们决定开发一款尽可能简单的 RISC-V CPU（类似于 [tinyriscv](https://gitee.com/liangkangnan/tinyriscv/)），主要面向**本科低年级同学**，也即对读者的知识水平要求仅为有基本的数字电路以及 C 语言基础。
+
+简单而不简陋，我们也希望尽可能多地扩展其功能性（倒并不是说完全不考虑性能和节能了，只是不是当前的开发重点），并在此之上设计更多有趣且能加深同学们对体系结构理解的实验。截至目前为止，YatCPU 包含或计划包含以下特征：
 
 - [x] 使用 Chisel 实现
 - [x] RV32I 指令集
@@ -67,7 +69,7 @@ YatCPU (**Y**et **a**nother **t**oy CPU) 是一款即将开源的教学用 RISC-
     - [ ] [Debian](https://www.debian.org/)
 - [ ] 完善且适用于零基础新生的文档
 - [ ] 基于 YatCPU 设计更多体系结构实验
-    - [ ] 缓存一致性？
-    - [ ] 多核？
+    - [ ] 缓存一致性
+    - [ ] 多核
 
 最后要感谢[广爷](http://cse.sysu.edu.cn/content/5357)和他的同学们，可以让我在课上“胡作非为”。还要由衷感谢 [:material-github: howardlau1999](https://github.com/howardlau1999)，支撑了 YatCPU 前期开发的绝大部份工作量（毫不夸张地说，白白在三天内完成了我原计划一个月的工作量）。
