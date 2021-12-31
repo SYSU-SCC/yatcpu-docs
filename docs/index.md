@@ -1,10 +1,12 @@
 # 前言
 
-By: [:material-github: wu-kan](https://github.com/wu-kan)
+By: [wu-kan](https://github.com/wu-kan)
 
-YatCPU (**Y**et **a**nother **t**oy CPU) 是一款即将开源的教学用 RISC-V 处理器，基于 Chisel 硬件设计语言实现，并用于中山大学 (Sun **Yat**-sen University) 计算机学院组成原理实验课程的教学。同样欢迎其他高校相关实验课程使用！
+YatCPU (**Y**et **a**nother **t**oy CPU，逸芯) 是一款开源、开发中的教学用 RISC-V 处理器，基于 Chisel 硬件设计语言实现，并用于中山大学 (Sun **Yat**-sen University) 计算机学院冯班组成原理实验课程的教学。同样欢迎其他高校相关课程使用！
 
-## Why another CPU? 
+此处同样给出[我们在课堂上的展示](assets/slides.pdf)。
+
+## Why another CPU
 
 为了回答这一问题，需要先介绍一下中大往年组成原理实验课程的情况。学生需要在半个学期的时间里，从零开始实现一个 MIPS 指令集的子集的 CPU，分别完成[单周期](https://wu-kan.cn/2018/11/23/%E5%8D%95%E5%91%A8%E6%9C%9FCPU%E8%AE%BE%E8%AE%A1/)到[五周期](https://wu-kan.cn/2018/12/23/%E5%A4%9A%E5%91%A8%E6%9C%9FCPU%E8%AE%BE%E8%AE%A1/) CPU 的实现并由助教验收，少数能力强的同学可以将其扩展到流水线。计组实验被称作计院学生的第一道门槛，相较于大一的实验课程挂科率飙升，每年都有很多学生重修。
 
@@ -12,7 +14,7 @@ YatCPU (**Y**et **a**nother **t**oy CPU) 是一款即将开源的教学用 RISC-
 
 与此同时，我也在各种新闻上看到国内各大高校对计组课程的改革（“在自己写的 CPU 上跑自己写的操作系统”），心中很难不产生一些羡慕。在大四的某一天，我得知 [:material-github: NelsonCheung-cn](https://github.com/NelsonCheung-cn) 开源了 [Yat-sen OS](https://github.com/NelsonCheung-cn/yatsenos-riscv)，并成功用在下一级操作系统实验课上。回想起自己前两年在操统实验（和计组实验课上）遭受的折磨，意识到自己也可以做一个 TA，以一个全新的身份对待之前的实验。怀着这种想法，我报名并成为了第一届[冯班](http://news2.sysu.edu.cn/news01/1375374.htm)计组课的助教。
 
-## 现状与积弊
+### 现状与积弊
 
 限于时间原因，在第一届实验课上我并没有对往年的实验做过多改造，只是调整了[实验要求](https://wu-kan.cn/2021/11/16/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E5%AE%9E%E9%AA%8C%E8%AF%BE%E8%AF%BE%E4%BB%B6/)，将课程的指令集从 MIPS 改为 RISC-V。通过观察和自己做实验的经历，主要找到以下几个实验课程中存在的问题：
 
@@ -31,7 +33,9 @@ YatCPU (**Y**et **a**nother **t**oy CPU) 是一款即将开源的教学用 RISC-
         - 作为检查实验的 TA，非常痛苦！
         - 做实验的同学更痛苦！
 
-基于上述问题，如果想为课程设计合适的实验，我们希望包含以下特征：
+### 动机
+
+基于上述问题，我们希望面向如下目标改善课程实验：
 
 1. 上手难度低、开发效率高
     - 更简单的开发语言
@@ -42,9 +46,9 @@ YatCPU (**Y**et **a**nother **t**oy CPU) 是一款即将开源的教学用 RISC-
     - 容易做出小的成果
     - 和其他课程“打通”
 
-## 未来与展望
+## Feature and Future
 
-基于上述思考，我们决定开发一款尽可能简单的 RISC-V CPU（类似于 [tinyriscv](https://gitee.com/liangkangnan/tinyriscv/)），主要面向**本科低年级同学**，也即对读者的知识水平要求仅为有基本的数字电路以及 C 语言基础。
+最终，我们决定开发一款尽可能简单的 RISC-V CPU（类似于 [tinyriscv](https://gitee.com/liangkangnan/tinyriscv/)），主要面向**本科低年级同学**，也即对读者的知识水平要求仅为有基本的数字电路以及 C 语言基础。
 
 简单而不简陋，我们也希望尽可能多地扩展其功能性（倒并不是说完全不考虑性能和节能了，只是不是当前的开发重点），并在此之上设计更多有趣且能加深同学们对体系结构理解的实验。截至目前为止，YatCPU 包含或计划包含以下特征：
 
@@ -52,7 +56,7 @@ YatCPU (**Y**et **a**nother **t**oy CPU) 是一款即将开源的教学用 RISC-
 - [x] RV32I 指令集
     - [ ] 增加 RV64 等更多指令集
 - [x] 三级流水线
-- [x] 全 Linux/WSL 开发环境
+- [x] 支持全 Linux/WSL 开发环境
     - [x] 自动化评测
     - [x] 自动化烧板
 - [x] 支持在高校数电教学常用的 [Basys3](https://digilent.com/reference/programmable-logic/basys-3/start) 开发板上
@@ -77,4 +81,4 @@ YatCPU (**Y**et **a**nother **t**oy CPU) 是一款即将开源的教学用 RISC-
     - [ ] 缓存一致性
     - [ ] 向量处理器
 
-最后要感谢[广爷](http://cse.sysu.edu.cn/content/5357)和他的同学们，可以让我在课上“胡作非为”。还要由衷感谢 [:material-github: howardlau1999](https://github.com/howardlau1999)，支撑了 YatCPU 前期开发的绝大部份工作量（毫不夸张地说，白白在三天内完成了我原计划一个月的工作量）。
+最后要感谢[广爷](http://cse.sysu.edu.cn/content/5357)和他的同学们，可以让我在课上“胡作非为”。还要由衷感谢 [howardlau1999](https://github.com/howardlau1999)，支撑了 YatCPU 前期开发的绝大部份工作量（毫不夸张地说，白白在三天内完成了我原计划一个月的工作量）。
