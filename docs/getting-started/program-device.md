@@ -29,9 +29,7 @@ cd vivado
 powershell.exe 'C:\Xilinx\Vivado_Lab\2020.1\bin\vivado_lab.bat -mode batch -source .\program_device.tcl'
 ```
 
-**中山大学校园网内**下载 Vivado Lab 安装包，也可以使用我们提供的的镜像。
-
-下载地址：[https://mirrors.matrix.moe/software/Xilinx_Vivado_Lab_Win_2020.1_0602_1208.tar.gz](https://mirrors.matrix.moe/software/Xilinx_Vivado_Lab_Win_2020.1_0602_1208.tar.gz)
+**中山大学校园网内**下载 Vivado Lab 安装包，也可以使用我们提供的的镜像：[点此下载](https://mirrors.matrix.moe/software/Xilinx_Vivado_Lab_Win_2020.1_0602_1208.tar.gz)
 
 ## 烧板结果
 
