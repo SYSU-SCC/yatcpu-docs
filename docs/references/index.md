@@ -20,6 +20,8 @@ Vivado 2020.1 Tcl 脚本指令手册 [[PDF](https://www.xilinx.com/support/docum
 
 香山处理器 [:material-github: OpenXiangshan/Xiangshan](https://github.com/OpenXiangshan/Xiangshan)
 
+riscv-sodor [:material-github: ucb-bar/riscv-sodor](https://github.com/ucb-bar/riscv-sodor)
+
 riscv-mini [:material-github: ucb-bar/riscv-mini](https://github.com/ucb-bar/riscv-mini)
 
 tinyriscv [liangkangnan/tinyriscv](https://gitee.com/liangkangnan/tinyriscv)
