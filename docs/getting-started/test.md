@@ -16,8 +16,8 @@ sbt test
 [success] Total time: 385 s (06:25), completed Dec 15, 2021, 8:45:25 PM
 ```
 
-输入如下指令，可以编译生成 verilog 代码 `verilog/Top.v`。
+输入如下指令，可以编译生成适用于 Basys 3 开发板的 Verilog 代码 `verilog/basys3/Top.v`。
 
 ```bash
-sbt run
+make basys3
 ```
