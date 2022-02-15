@@ -9,12 +9,15 @@ git clone https://github.com/howardlau1999/yatcpu
 cd yatcpu
 sbt test
 ```
+
 ???+tips "设置代理"
     如果下载失败或者网络不稳定，可以尝试设置代理。请根据自己的实际情况填写代理地址。
     ```bash
     export HTTPS_PROXY=http://127.0.0.1:1080
     export JAVA_OPTS="$JAVA_OPTS -Dhttps.proxyHost=127.0.0.1 -Dhttps.proxyPort=1080"
     ```
+???+tips "使用 Verilator 加速测试"
+    如果测试运行太慢，可以[安装 Verilator 加速测试](./environment.md#%E5%AE%89%E8%A3%85-verilator%E5%8F%AF%E9%80%89)。
 
 如果成功执行，你会看到类似这样的输出。
 

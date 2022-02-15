@@ -93,7 +93,7 @@ By: [:material-github: wu-kan](https://github.com/wu-kan)、[:material-github: h
 sudo apt install -y git \
     gcc-riscv64-unknown-elf \
     make \
-    gnupg2 \
+    gnupg \
     scala \
     libtinfo5 \
     coreutils
@@ -104,7 +104,7 @@ sudo apt install -y git \
 | git                     | 代码版本管理工具                     |
 | gcc-riscv64-unknown-elf | 用于编译生成 RISC-V 可执行二进制文件 |
 | make                    | 用于执行 Makefile                    |
-| gnupg2                  | 签名验证工具                         |
+| gnupg                   | 签名验证工具                         |
 | scala                   | 本项目的语言编译器                   |
 | sbt                     | Scala 包管理器                       |
 | libtinfo5               | Vivado 启动依赖                      |
@@ -115,11 +115,16 @@ sudo apt install -y git \
 [sbt](https://packages.debian.org/sid/sbt) 目前仍然在 Debian 的[不稳定](https://www.debian.org/releases/sid/)版本中。对于不希望使用 sid 系统的同学，可以按照[文档](https://www.scala-sbt.org/1.x/docs/zh-cn/Installing-sbt-on-Linux.html#Ubuntu%E5%92%8C%E5%85%B6%E4%BB%96%E5%9F%BA%E4%BA%8EDebian%E7%9A%84%E5%8F%91%E8%A1%8C%E7%89%88)的指示下载安装。
 
 ```bash
-echo "deb https://repo.scala-sbt.org/scalasbt/debian all main" | sudo tee \
+
+curl -fsSL "https://keyserver.ubuntu.com/pks/lookup?op=get&\
+search=0x2EE0EA64E40A89B84B2DF73499E82A75642AC823" | \
+    sudo gpg --dearmor -o /usr/share/keyrings/scalasbt-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/scalasbt-archive-keyring.gpg] \
+  https://repo.scala-sbt.org/scalasbt/debian all main" | sudo tee \
     /etc/apt/sources.list.d/sbt.list
-echo "deb https://repo.scala-sbt.org/scalasbt/debian /" | sudo tee \
+echo "deb [signed-by=/usr/share/keyrings/scalasbt-archive-keyring.gpg] \
+  https://repo.scala-sbt.org/scalasbt/debian /" | sudo tee \
     /etc/apt/sources.list.d/sbt_old.list
-curl -sL "https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x2EE0EA64E40A89B84B2DF73499E82A75642AC823" | sudo apt-key add
 sudo apt update
 sudo apt install sbt
 ```
@@ -174,3 +179,28 @@ cd Xilinx_Unified_2020.1_0602_1208
 ```
 
 其中 `~/Xilinx` 是安装目录，可以自行定义。
+
+### 安装 Verilator（可选）
+
+Verilator 是一款将 Verilog 代码编译到 C++ 代码以加速模拟过程的软件，目前仅支持在 Linux/macOS 环境下运行。而 Chisel 3 自带的模拟软件较慢，对于后期需要 CPU 运行较大的程序时，测试过程可能会很慢。对于大型的测试，测试程序会在 `PATH` 目录中寻找 Verilator 以加速测试过程，提高迭代效率。Verilator 推荐的安装方式是从源码安装：
+
+```bash
+cd $HOME
+sudo apt-get install git perl python3 make autoconf g++ \
+    flex bison ccache libgoogle-perftools-dev numactl perl-doc
+git clone https://github.com/verilator/verilator
+cd verilator
+autoconf
+./configure
+make -j `nproc`
+sudo make install
+```
+
+???+tips "修改安装路径"
+    如果不想全局安装，可以在 `./configure` 后加参数 `--prefix=/path/to/install`，指定安装路径，且在后续测试时，需要将安装路径添加到 `PATH` 环境变量，以便测试程序可以找到 Verilator 可执行程序。
+
+命令执行完毕后，可以执行命令 `verilator --version` 测试安装是否成功。如果安装无误，应当看到如下输出（版本号可能不同）：
+
+```
+Verilator 4.219 devel rev UNKNOWN.REV (mod)
+```
