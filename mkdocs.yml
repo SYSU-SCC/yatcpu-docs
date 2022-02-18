@@ -18,6 +18,7 @@ nav:
     - "实验零 Chisel 3 初步": "labs/lab0-basics-of-chisel3.md"
     - "实验一 单周期 CPU": "labs/lab1-single-cycle-cpu.md"
     - "实验二 多周期 CPU": "labs/lab2-multi-cycle-cpu.md"
+    - "实验三 流水线 CPU": "labs/lab3-pipelined-cpu.md"
   - FAQ: "faq/index.md"
   - 参考资料: "references/index.md"
   - 附录: 
