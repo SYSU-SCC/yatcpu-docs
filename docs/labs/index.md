@@ -1,3 +1,3 @@
-# Coming soon
+# 实验
 
-By: [:material-github: wu-kan](https://github.com/wu-kan)
+本系列实验需要你将知识应用到实践中，一步步构建出能运行 RISC-V 程序的 CPU。实验将从基本的 Chisel 3 语言基础开始，提供实验指引帮助你完成实验代码，并按组件以及难度一步步深入，实现单周期、多周期以及流水线 CPU。

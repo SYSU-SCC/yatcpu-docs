@@ -15,7 +15,9 @@ nav:
     - 总线: "tutorial/bus.md"
   - 实验: 
     - 简介: "labs/index.md"
-    - 实验一: "labs/lab1.md"
+    - "实验零 Chisel 3 初步": "labs/lab0-basics-of-chisel3.md"
+    - "实验一 单周期 CPU": "labs/lab1-single-cycle-cpu.md"
+    - "实验二 多周期 CPU": "labs/lab2-multi-cycle-cpu.md"
   - FAQ: "faq/index.md"
   - 参考资料: "references/index.md"
   - 附录: 
@@ -78,6 +80,8 @@ markdown_extensions:
       custom_checkbox: true
   - pymdownx.tabbed:
       alternate_style: true
+extra_css:
+  - stylesheets/extra.css
 extra:
   social:
     - icon: fontawesome/brands/github
