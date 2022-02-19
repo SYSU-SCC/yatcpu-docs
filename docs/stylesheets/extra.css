@@ -2,6 +2,6 @@ p {
     text-align: justify;
 }
 
-code {
+code, a {
     line-break: anywhere;
 }
