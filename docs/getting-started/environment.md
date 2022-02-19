@@ -14,7 +14,35 @@ By: [:material-github: wu-kan](https://github.com/wu-kan)、[:material-github: h
 我们提供两种风格的开发环境配置方案：
 
 1. 对于喜欢使用 IDE 集成环境的同学，推荐使用 Windows 配置方法。
-2. 对于喜欢使用终端+代码编辑器组合的同学，推荐使用 Linux/WSL 配置方法。
+2. 对于喜欢使用终端+代码编辑器组合的同学，推荐使用 Linux/WSL 配置方法，或使用我们准备好的 Docker 环境。
+
+## Docker 配置方法
+
+该方法适用于 Windows、Linux 和 macOS 系统。
+
+首先到 [Docker 官方网站](https://docs.docker.com/engine/install/#supported-platforms) 选择并下载你使用的操作系统所对应的安装包，按照安装指南配置好 Docker。Docker 环境中含有 Scala 开发环境以及 Verilator 仿真器，但不包含 Vivado。如果你不需要烧板，那么使用 Docker 环境就可以完成所有实验以及软件测试了。
+
+之后，只需要运行
+
+```bash
+docker run -it --rm howardlau1999/yatcpu
+sbt test
+```
+
+Docker 会自动下载我们准备好的镜像并运行容器。如果成功执行，你会看到类似这样的输出。
+
+```
+[success] Total time: 385 s (06:25), completed Dec 15, 2021, 8:45:25 PM
+```
+
+Docker 中的 YatCPU 代码可能不是最新版，且容器结束运行之后所有修改都将丢失，如果你需要完成实验，需要先将代码仓库克隆到本机，然后在运行 Docker 容器时挂载本机目录：
+
+```
+git clone https://github.com/howardlau1999/yatcpu
+docker run -it --rm -v yatcpu:/root/yatcpu howardlau1999/yatcpu
+```
+
+按照这种方法在容器中所做的修改将保存到本机文件夹，反之同理。
 
 ## Windows 配置方法
 
@@ -188,7 +216,7 @@ Verilator 是一款将 Verilog 代码编译到 C++ 代码以加速模拟过程�
 cd $HOME
 sudo apt-get install git perl python3 make autoconf g++ \
     flex bison ccache libgoogle-perftools-dev numactl perl-doc
-git clone https://github.com/verilator/verilator
+git clone --depth 1 -b stable https://github.com/verilator/verilator
 cd verilator
 autoconf
 ./configure
