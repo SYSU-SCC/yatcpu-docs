@@ -54,11 +54,15 @@ docker run -it --rm -v yatcpu:/root/yatcpu howardlau1999/yatcpu
 
 或者[到 JetBrains 官方网站下载 Intellij IDEA](https://www.jetbrains.com/idea/download/#section=windows)，下载免费的 Commnunity Edition 即可。
 
-使用 Intellij IDEA 打开当前项目根目录。
+打开 Intellij IDEA，选择 “Get from VCS”，按照下图填入信息：
+
+![images/idea_vcs.png](images/idea-vcs.png)
+
+其中 URL 填 `https://github.com/howardlau1999/yatcpu`，Directory 可以填一个你喜欢的路径，要记得自己存在哪，后续命令行要使用到这个路径，之后点击 “Clone”，就会自动下载项目代码仓库并打开了。
 
 ![images/idea-0.png](images/idea-0.png)
 
-按快捷键 ++ctrl+alt+s++ 打开设置。
+打开 IDE 后，按快捷键 ++ctrl+alt+s++ 打开设置。
 
 ![images/idea-1.png](images/idea-1.png)
 
@@ -107,6 +111,65 @@ docker run -it --rm -v yatcpu:/root/yatcpu howardlau1999/yatcpu
 !!! warning "预留足够的硬盘空间"
     Vivado 2020.1 安装包体积较大，约为 36 GB，且后续安装也要使用大量硬盘空间。请预留好**至少 100 GB 的硬盘空间**。
 
+### 安装 Clang 编译器
+
+如果你**没有安装过 Visual Studio**，[点此下载 Visual Studio Build Tools 安装包](https://aka.ms/vs/17/release/vs_BuildTools.exe)并运行，在“工作负荷”标签页选择“使用 C++ 的桌面开发”，并在右侧“安装详细信息”中的“可选”列表里，勾选“适用于 Windows 的 C++ Clang 工具”，之后点击安装即可。
+
+![build-tools-installer](images/vs-build-tools-installer.png)
+
+如果**已经安装过 Visual Studio**，在开始菜单中搜索“Visual Studio Installer”，然后点击“修改”，选中“工作负荷”标签页里的“使用 C++ 的桌面开发”，并在右侧“安装详细信息”中的“可选”列表里，勾选“适用于 Windows 的 C++ Clang 工具”，之后点击“安装”即可。
+
+![vs-installer](images/vs-installer.png)
+
+![vs-installer-clang](images/vs-installer-clang.png)
+
+安装完成后，在开始菜单中搜索“Developer Command Prompt”，然后运行，应该会弹出一个命令行窗口显示以下信息（以下为已安装 Visual Studio 的样例）：
+
+```cmd
+**********************************************************************
+** Visual Studio 2022 Developer Command Prompt v17.0.4
+** Copyright (c) 2021 Microsoft Corporation
+**********************************************************************
+
+C:\Program Files\Microsoft Visual Studio\2022\Community>
+```
+
+之后，`cd` 到你克隆到本地的代码仓库的中的 `csrc` 文件夹，例如 `C:\yatcpu\csrc`，如果你的项目文件保存在别的盘符（例如 `D:`），要先输入 `D:` 按回车后再执行 `cd` 命令。然后运行 `.\build.bat` 脚本：
+
+```cmd
+C:\Program Files\Microsoft Visual Studio\2022\Community>cd C:\yatcpu\csrc
+C:\yatcpu\csrc>.\build.bat
+```
+
+如果正常运行，应该看到以下输出：
+
+```cmd
+C:\yatcpu\csrc>rmdir /Q /S build
+系统找不到指定的文件。
+
+C:\yatcpu\csrc>cmake -DCMAKE_TOOLCHAIN_FILE=toolchain.cmake -GNinja -B build .
+-- The C compiler identification is Clang 12.0.0
+-- The CXX compiler identification is Clang 12.0.0
+-- The ASM compiler identification is Clang
+-- Found assembler: C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/Llvm/x64/bin/clang.exe
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/Llvm/x64/bin/clang.exe - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/Llvm/x64/bin/clang++.exe - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done
+-- Generating done
+-- Build files have been written to: C:/yatcpu/csrc/build
+
+C:\yatcpu\csrc>cmake --build build
+[14/14] Linking ASM executable mmio
+```
+
 ## Linux/WSL1 配置方法
 
 下面介绍如何在 Linux 或 WSL(Windows Subsystem for Linux) 环境中搭建本实验的开发环境。[这里](https://liuhaohua.com/server-programming-guide/appendix/build-env/)给出搭建相关环境的一个参照。
@@ -119,19 +182,23 @@ docker run -it --rm -v yatcpu:/root/yatcpu howardlau1999/yatcpu
 
 ```bash
 sudo apt install -y git \
-    gcc-riscv64-unknown-elf \
+    clang \
     make \
     gnupg \
     scala \
     libtinfo5 \
-    coreutils
+    coreutils \
+    cmake \
+    llvm 
 ```
 
 | 名称                    | 说明                                 |
 | ----------------------- | ------------------------------------ |
 | git                     | 代码版本管理工具                     |
-| gcc-riscv64-unknown-elf | 用于编译生成 RISC-V 可执行二进制文件 |
+| clang                   | 用于编译生成 RISC-V 可执行二进制文件 |
+| llvm                    | 用于编辑和查看二进制文件             |
 | make                    | 用于执行 Makefile                    |
+| cmake                   | 用于执行 CMakeLists.txt              |
 | gnupg                   | 签名验证工具                         |
 | scala                   | 本项目的语言编译器                   |
 | sbt                     | Scala 包管理器                       |
@@ -143,7 +210,6 @@ sudo apt install -y git \
 [sbt](https://packages.debian.org/sid/sbt) 目前仍然在 Debian 的[不稳定](https://www.debian.org/releases/sid/)版本中。对于不希望使用 sid 系统的同学，可以按照[文档](https://www.scala-sbt.org/1.x/docs/zh-cn/Installing-sbt-on-Linux.html#Ubuntu%E5%92%8C%E5%85%B6%E4%BB%96%E5%9F%BA%E4%BA%8EDebian%E7%9A%84%E5%8F%91%E8%A1%8C%E7%89%88)的指示下载安装。
 
 ```bash
-
 curl -fsSL "https://keyserver.ubuntu.com/pks/lookup?op=get&\
 search=0x2EE0EA64E40A89B84B2DF73499E82A75642AC823" | \
     sudo gpg --dearmor -o /usr/share/keyrings/scalasbt-archive-keyring.gpg
@@ -207,6 +273,59 @@ cd Xilinx_Unified_2020.1_0602_1208
 ```
 
 其中 `~/Xilinx` 是安装目录，可以自行定义。
+
+### 测试 Clang 编译器
+
+`cd` 到仓库中的 `csrc` 目录，运行 `./build.sh` 脚本，一切正常的话应当看到如下输出：
+
+```bash
+~/chisel-riscv/csrc$ ./build.sh
+-- The C compiler identification is Clang 11.0.1
+-- The CXX compiler identification is Clang 11.0.1
+-- The ASM compiler identification is Clang
+-- Found assembler: /usr/bin/clang
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/clang - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/clang++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /mnt/c/Users/Liuhaohua/Desktop/chisel-riscv/csrc/build
+Scanning dependencies of target prelude
+[  7%] Building ASM object CMakeFiles/prelude.dir/init.S.obj
+[ 14%] Linking ASM static library libprelude.a
+[ 14%] Built target prelude
+Scanning dependencies of target fibonacci
+Scanning dependencies of target hello
+Scanning dependencies of target mmio
+Scanning dependencies of target quicksort
+Scanning dependencies of target tetris
+Scanning dependencies of target sb
+[ 21%] Building ASM object CMakeFiles/mmio.dir/mmio.S.obj
+[ 57%] Building C object CMakeFiles/quicksort.dir/quicksort.c.obj
+[ 57%] Building ASM object CMakeFiles/sb.dir/sb.S.obj
+[ 57%] Building C object CMakeFiles/tetris.dir/tetris.c.obj
+[ 57%] Building C object CMakeFiles/fibonacci.dir/fibonacci.c.obj
+[ 57%] Building C object CMakeFiles/hello.dir/hello.c.obj
+[ 78%] Linking C executable quicksort
+[ 78%] Linking C executable fibonacci
+[ 78%] Linking C executable tetris
+[100%] Linking ASM executable sb
+[100%] Linking C executable hello
+[100%] Linking ASM executable mmio
+[100%] Built target quicksort
+[100%] Built target tetris
+[100%] Built target fibonacci
+[100%] Built target sb
+[100%] Built target mmio
+[100%] Built target hello
+```
 
 ### 安装 Verilator（可选）
 
