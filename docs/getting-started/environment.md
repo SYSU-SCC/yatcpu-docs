@@ -189,13 +189,14 @@ sudo apt install -y git \
     libtinfo5 \
     coreutils \
     cmake \
-    llvm 
+    llvm \
+    lld 
 ```
 
 | 名称                    | 说明                                 |
 | ----------------------- | ------------------------------------ |
 | git                     | 代码版本管理工具                     |
-| clang                   | 用于编译生成 RISC-V 可执行二进制文件 |
+| clang, lld              | 用于编译生成 RISC-V 可执行二进制文件 |
 | llvm                    | 用于编辑和查看二进制文件             |
 | make                    | 用于执行 Makefile                    |
 | cmake                   | 用于执行 CMakeLists.txt              |
