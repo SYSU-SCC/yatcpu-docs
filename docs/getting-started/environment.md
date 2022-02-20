@@ -147,7 +147,7 @@ C:\yatcpu\csrc>.\build.bat
 C:\yatcpu\csrc>rmdir /Q /S build
 系统找不到指定的文件。
 
-C:\yatcpu\csrc>cmake -DCMAKE_TOOLCHAIN_FILE=toolchain.cmake -GNinja -B build .
+C:\yatcpu\csrc>cmake -DCMAKE_TOOLCHAIN_FILE=toolchain.cmake -G"NMake Makefiles" -B build .
 -- The C compiler identification is Clang 12.0.0
 -- The CXX compiler identification is Clang 12.0.0
 -- The ASM compiler identification is Clang
@@ -167,7 +167,34 @@ C:\yatcpu\csrc>cmake -DCMAKE_TOOLCHAIN_FILE=toolchain.cmake -GNinja -B build .
 -- Build files have been written to: C:/yatcpu/csrc/build
 
 C:\yatcpu\csrc>cmake --build build
-[14/14] Linking ASM executable mmio
+Scanning dependencies of target tetris
+[  6%] Building ASM object CMakeFiles/tetris.dir/init.S.obj
+[ 12%] Building C object CMakeFiles/tetris.dir/tetris.c.obj
+[ 18%] Linking C executable tetris
+[ 18%] Built target tetris
+Scanning dependencies of target hello
+[ 25%] Building ASM object CMakeFiles/hello.dir/init.S.obj
+[ 31%] Building C object CMakeFiles/hello.dir/hello.c.obj
+[ 37%] Linking C executable hello
+[ 37%] Built target hello
+Scanning dependencies of target fibonacci
+[ 43%] Building ASM object CMakeFiles/fibonacci.dir/init.S.obj
+[ 50%] Building C object CMakeFiles/fibonacci.dir/fibonacci.c.obj
+[ 56%] Linking C executable fibonacci
+[ 56%] Built target fibonacci
+Scanning dependencies of target quicksort
+[ 62%] Building ASM object CMakeFiles/quicksort.dir/init.S.obj
+[ 68%] Building C object CMakeFiles/quicksort.dir/quicksort.c.obj
+[ 75%] Linking C executable quicksort
+[ 75%] Built target quicksort
+Scanning dependencies of target mmio
+[ 81%] Building ASM object CMakeFiles/mmio.dir/mmio.S.obj
+[ 87%] Linking ASM executable mmio
+[ 87%] Built target mmio
+Scanning dependencies of target sb
+[ 93%] Building ASM object CMakeFiles/sb.dir/sb.S.obj
+[100%] Linking ASM executable sb
+[100%] Built target sb
 ```
 
 ## Linux/WSL1 配置方法
