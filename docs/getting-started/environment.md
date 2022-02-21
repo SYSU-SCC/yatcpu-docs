@@ -46,7 +46,7 @@ docker run -it --rm -v yatcpu:/root/yatcpu howardlau1999/yatcpu
 
 ## Windows 配置方法
 
-### 安装 Intellij IDEA + 插件
+### 安装 Intellij IDEA 和 Scala 插件
 
 使用 Intellij IDEA 配置开发环境比较简单，而且也经过了测试，所以，我们推荐在 Windows 上直接使用 Intellij IDEA 来设置开发环境。
 
@@ -197,13 +197,39 @@ Scanning dependencies of target sb
 [100%] Built target sb
 ```
 
+### 安装 Verilator（可选）
+
+Chisel 3 自带的仿真器速度较慢，Verilator 通过将 Verilog 代码编译为 C++ 代码加速仿真。目前，Verilator 仅原生支持 Linux 系统，但我们可以使用 MSYS2 在 Windows 上使用 Verilator。
+
+首先需要安装 MSYS2，到[官方网站下载最新的安装包](https://www.msys2.org/)，运行安装程序。注意**安装路径不能含有中文和空格**，建议直接安装在默认的 `C:\msys64` 下。安装完成之后，按 ++win+r++，输入 `cmd` 回车，打开命令提示符，运行：
+
+```cmd
+C:\msys64\usr\bin\bash.exe -l -c "pacman -Sy --noconfirm --needed base-devel mingw-w64-x86_64-toolchain git flex mingw-w64-x86_64-cmake mingw-w64-x86_64-verilator"
+```
+
+该命令将安装 Verilator 以及其依赖。安装完成后，还需要设置系统环境变量，在开始菜单搜索“环境变量”，打开“编辑系统环境变量”，在弹出的对话框点击“环境变量”，双击用户变量中的“Path”，点击“新建”，在**最后**添加两行：
+
+- `C:\msys64\usr\bin`
+- `C:\msys64\mingw64\bin`
+
+![windows-verilator-path](images/windows-verilator-path.png)
+
+之后一路点“确定”关掉所有对话框，并关掉刚刚打开的命令提示符。然后重新打开命令提示符，运行 `verilator_bin --version`，如果配置正确，应当看到类似的输出：
+
+```
+C:\>verilator_bin --version
+Verilator 4.218 2022-01-17 rev UNKNOWN.REV
+```
+
+之后，运行仿真测试的时候，测试框架将自动寻找 Verilator 并用来加速。
+
 ## Linux/WSL1 配置方法
 
 下面介绍如何在 Linux 或 WSL(Windows Subsystem for Linux) 环境中搭建本实验的开发环境。[这里](https://liuhaohua.com/server-programming-guide/appendix/build-env/)给出搭建相关环境的一个参照。
 
 这里假设你使用的 Linux 或 WSL 系统是 Debian 11。对于使用其他 Linux 系统的同学，操作是类似的，相信你有足够的能力参考下面的指令搭建环境。
 
-### 必要工具
+### 安装必要工具
 
 本实验将会使用到以下工具，除 sbt 外，可以通过下面提供的命令一键安装：
 
@@ -357,7 +383,15 @@ Scanning dependencies of target sb
 
 ### 安装 Verilator（可选）
 
-Verilator 是一款将 Verilog 代码编译到 C++ 代码以加速模拟过程的软件，目前仅支持在 Linux/macOS 环境下运行。而 Chisel 3 自带的模拟软件较慢，对于后期需要 CPU 运行较大的程序时，测试过程可能会很慢。对于大型的测试，测试程序会在 `PATH` 目录中寻找 Verilator 以加速测试过程，提高迭代效率。Verilator 推荐的安装方式是从源码安装：
+Verilator 是一款将 Verilog 代码编译到 C++ 代码以加速模拟过程的软件，目前仅支持在 Linux/macOS 环境下运行。而 Chisel 3 自带的模拟软件较慢，对于后期需要 CPU 运行较大的程序时，测试过程可能会很慢。对于大型的测试，测试程序会在 `PATH` 目录中寻找 Verilator 以加速测试过程，提高迭代效率。
+
+可以直接通过 apt 安装：
+
+```bash
+sudo apt install verilator
+```
+
+或者使用 Verilator 推荐的安装方式，从源码安装：
 
 ```bash
 cd $HOME
@@ -379,3 +413,5 @@ sudo make install
 ```
 Verilator 4.219 devel rev UNKNOWN.REV (mod)
 ```
+
+之后，运行仿真测试的时候，测试框架将自动寻找 Verilator 并用来加速。

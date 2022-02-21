@@ -6,22 +6,34 @@ By: [:material-github: howardlau1999](https://github.com/howardlau1999)
 
 ## 生成波形文件
 
-### 使用 Verilator 仿真生成波形文件
+### 测试时生成波形文件
 
-按照[安装指南](https://veripool.org/guide/latest/install.html)，安装 Verilator 并设置环境变量。然后在项目根目录下执行：
+在运行测试时，如果设置环境变量 `WRITE_VCD` 为 `1`，则会生成波形文件。
 
-```bash
-make verilator-sim
-```
+=== "Linux/macOS"
+    ```bash
+    WRITE_VCD=1 sbt test
+    ```
 
-即可编译并运行 Verilator 仿真。你可以通过 `SIM_TIME` 变量设置仿真运行的时间：
+=== "Windows"
+    Powershell:
+    ```powershell
+    $Env:WRITE_VCD=1; sbt test
+    ```
+    命令提示符:
+    ```cmd
+    set WRITE_VCD=1
+    sbt test
+    ```
 
-```bash
-SIM_TIME=10000 make verilator-sim
-```
+=== "Intellij IDEA"
+    先点击右上角三角形左边的下拉菜单，点 “Edit configurations...”，如果没有就先运行一次测试。 
+    ![](images/write-vcd-idea-1.png)
+    在 “Environment Variables” 选项中，添加一个环境变量，名称为 `WRITE_VCD`，值为 `1`。
+    ![](images/write-vcd-idea-2.png)
+    之后点 OK 保存即可。
 
-运行命令后，将会生成 `verilog/verilator/obj_dir/sim.vcd` 文件。
-
+之后可以在 `test_run_dir` 目录下的各个子目录中找到 `.vcd` 文件，使用 GTKWave 打开即可，参考[查看波形文件](#查看波形文件)一节。
 ### 使用 Vivado 仿真生成波形文件
 
 确保你的 PATH 路径中包含 Vivado 的安装目录，然后运行命令：
@@ -38,7 +50,7 @@ make vivado-sim
 不同软件生成的 VCD 文件路径不一样：
 
 - Vivado: `vivado/riscv-basys3/riscv-basys3.sim/sim_1/behav/xsim/dump.vcd`
-- Verilator: `verilog/verilator/obj_dir/sim.vcd`
+- 测试时生成：`test_run_dir` 目录下的各个子目录中的 `.vcd` 文件
 
 如果你的操作系统带有 GUI 图形界面，可以使用 [GTKWave](http://gtkwave.sourceforge.net/)，点击 "File->Open New Tab..." 打开对应的文件查看波形。
 
