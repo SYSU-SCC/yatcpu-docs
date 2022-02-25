@@ -34,6 +34,57 @@ By: [:material-github: howardlau1999](https://github.com/howardlau1999)
     之后点 OK 保存即可。
 
 之后可以在 `test_run_dir` 目录下的各个子目录中找到 `.vcd` 文件，使用 GTKWave 打开即可，参考[查看波形文件](#查看波形文件)一节。
+
+### 使用 Verilator 仿真生成波形文件
+
+如果想快速测试自己编写的程序，可以使用 Verilator 进行仿真，仿真的主函数已经写好，位于 `verilog/verilator/sim_main.cpp`。在第一次运行以及每次修改了 Chisel 3 代码后，需要在项目根目录执行命令生成 Verilog 文件：
+
+```bash
+sbt "runMain board.verilator.VerilogGenerator"
+```
+
+之后，进入 `verilog/verilator` 目录，执行以下命令生成仿真程序：
+
+=== "Linux/macOS"
+    ```bash
+    verilator --cc --exe --trace --build Top.v sim_main.cpp
+    ```
+    或
+    ```bash
+    verilator --cc --exe --trace Top.v sim_main.cpp
+    make -C obj_dir -f VTop.mk
+    ```
+
+=== "Windows"
+    ```bash
+    verilator_bin --cc --exe --trace --build Top.v sim_main.cpp
+    ```
+    或
+    ```bash
+    verilator_bin --cc --exe --trace Top.v sim_main.cpp
+    make -C obj_dir -f VTop.mk
+    ```
+
+编译完成后，会生成 `obj_dir/VTop` （Windows 下为 `obj_dir/VTop.exe`）的可执行文件。该可执行文件可以传入参数从而运行不同的代码文件。参数以及其用法如下：
+
+|参数|用法|
+|----|-----|
+|`-memory`|指定仿真内存的大小，单位为字（4字节）。用例：`-memory 4096`|
+|`-instruction`|指定用于初始化仿真内存的 RISC-V 程序。用例：`-instruction ~/yatcpu/src/main/resources/hello.asmbin`|
+|`-signature`|指定仿真结束后，需要输出的内存范围以及目的文件。用例：`-signature 0x100 0x200 mem.txt`|
+|`-halt`|指定停机标识符地址，往该内存地址写入 `0xBABECAFE` 即停止仿真。用例：`-halt 0x8000`|
+|`-vcd`|指定仿真过程波形保存的文件名，不指定则不会生成波形文件。用例：`-vcd dump.vcd`|
+|`-time`|指定最大仿真时间，注意时间是周期数的两倍。用例：`-time 1000`|
+
+例如，如果想加载 `hello.asmbin` 文件，仿真 1000 个周期，并将仿真波形保存到 `dump.vcd` 文件，可以运行：
+
+```bash
+obj_dir/VTop -instruction ~/yatcpu/src/main/resources/hello.asmbin \
+-time 2000 -vcd dump.vcd
+```
+
+另外，使用 Verilator 仿真时，向内存地址 `0x40000010`（也即 UART 的 MMIO 地址）写入的数据将转换为字符输出到标准输出，可以用来实现 `printf` 等功能，方便调试。 
+
 ### 使用 Vivado 仿真生成波形文件
 
 确保你的 PATH 路径中包含 Vivado 的安装目录，然后运行命令：

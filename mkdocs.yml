@@ -5,6 +5,8 @@ nav:
     - 开发环境: "getting-started/environment.md"
     - 快速测试: "getting-started/test.md"
     - 波形仿真: "getting-started/simulation.md"
+    - 配置合规性测试: "getting-started/compliance-test.md"
+    - "配置 CoreMark 测试": "getting-started/coremark-benchmark.md"
     - 烧板验证: "getting-started/program-device.md"
   - 预备知识:
     - 简介: "tutorial/index.md"

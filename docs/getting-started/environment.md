@@ -197,7 +197,7 @@ Scanning dependencies of target sb
 [100%] Built target sb
 ```
 
-### 安装 Verilator（可选）
+### 安装 Verilator
 
 Chisel 3 自带的仿真器速度较慢，Verilator 通过将 Verilog 代码编译为 C++ 代码加速仿真。目前，Verilator 仅原生支持 Linux 系统，但我们可以使用 MSYS2 在 Windows 上使用 Verilator。
 
@@ -385,7 +385,7 @@ Scanning dependencies of target sb
 [100%] Built target hello
 ```
 
-### 安装 Verilator（可选）
+### 安装 Verilator
 
 Verilator 是一款将 Verilog 代码编译到 C++ 代码以加速模拟过程的软件，目前仅支持在 Linux/macOS 环境下运行。而 Chisel 3 自带的模拟软件较慢，对于后期需要 CPU 运行较大的程序时，测试过程可能会很慢。对于大型的测试，测试程序会在 `PATH` 目录中寻找 Verilator 以加速测试过程，提高迭代效率。
 
@@ -419,3 +419,11 @@ Verilator 4.219 devel rev UNKNOWN.REV (mod)
 ```
 
 之后，运行仿真测试的时候，测试框架将自动寻找 Verilator 并用来加速。
+
+## macOS 配置指南
+
+建议使用 Homebrew 包管理器，执行：
+
+```bash
+brew install llvm cmake verilator sbt
+```
