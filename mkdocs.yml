@@ -39,6 +39,7 @@ theme:
   language: zh
   features:
     - navigation.top
+    - navigation.expand
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
