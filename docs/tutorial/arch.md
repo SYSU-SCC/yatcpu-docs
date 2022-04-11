@@ -74,7 +74,7 @@ if (RegWEFromMEM && RdFromMEM != 0 && RdFromMEM == Reg2RA) {
 
 #### 中断（CLINT）
 
-内核中断控制器 （CLINT）接收来自外设的中断信号 `InterruptFlag`，向控制单元发出阻塞流水线的请求 `StallFlagClint`，并将取指单元中当前 PC 值 `InsAddr`（若来自译码单元的 `JumpFlag` 有效，则是跳转指令的目标地址 `JumpAddress`）保存到 `MEPC`，将中断原因保存到 `MCAUSE`，修改 `MSTATUS`；然后向译码单元发送中断信号 `IntAssert` 和中断处理程序地址 `IntHandlerAddress`（`mtvec` 的值）。如上文所述，译码单元接收到 `IntAssert` 和 `IntHandlerAddress` 后会向译码单元传递跳转信号和跳转地址。这样，位于译码、执行、访存、写回阶段的指令继续正常执行，取指单元取出的指令将被清除，PC 被设置为中断服务程序入口地址，下面将开始执行中断服务程序。
+内核中断控制器 （CLINT）接收来自外设的中断信号 `InterruptFlag`，向控制单元发出阻塞流水线的请求 `StallFlagClint`，并将取指单元中当前 PC 值 `InsAddr`（若来自译码单元的 `JumpFlag` 有效，则是跳转指令的目标地址 `JumpAddress`）保存到 `MEPC`，将中断原因保存到 `MCAUSE`，修改 `MSTATUS`；然后向译码单元发送中断信号 `IntAssert` 和中断处理程序地址 `IntHandlerAddress`（`mtvec` 的值）。如上文所述，译码单元接收到 `IntAssert` 和 `IntHandlerAddress` 后会向取指单元传递跳转信号和跳转地址。这样，位于译码、执行、访存、写回阶段的指令继续正常执行，取指单元取出的指令将被清除，PC 被设置为中断服务程序入口地址，下面将开始执行中断服务程序。
 
 内核中断控制器还会检测当前正在译码的指令，若该指令为 `ecall` 或 `ebreak` 则引发一次异常，处理流程与中断类似；若该指令为 `mret`（即从中断或异常处理程序中返回），则修改 `mstatus`，然后将 `mepc` 的值作为“中断处理程序地址 `IntHandlerAddress`” 和“中断信号 `IntAssert`” 传递给译码单元，巧妙地利用进入中断的形式退出中断。
 
