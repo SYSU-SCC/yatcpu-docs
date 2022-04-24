@@ -16,6 +16,10 @@ Chisel 语言在线互动教程 [[Web](https://mybinder.org/v2/gh/freechipsproje
 
 Vivado 2020.1 Tcl 脚本指令手册 [[PDF](https://www.xilinx.com/support/documentation/sw_manuals/xilinx2020_1/ug835-vivado-tcl-commands.pdf)]
 
+## 工具
+
+在线 RISC-V 整数指令集解释器 [[Web](https://www.cs.cornell.edu/courses/cs3410/2019sp/riscv/interpreter/)]
+
 ## 其他开源实现
 
 香山处理器 [:material-github: OpenXiangshan/Xiangshan](https://github.com/OpenXiangshan/Xiangshan)
