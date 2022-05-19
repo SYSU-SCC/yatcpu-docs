@@ -6,6 +6,8 @@ The RISC-V Reader: An Open Architecture Atlas（RISC-V 手册：一本开源指�
 
 RISC-V Green Card [[PDF](http://riscvbook.com/greencard-20181213.pdf)]
 
+Processor Microarchitecture: An Implementation Perspective [[PDF](https://cseweb.ucsd.edu/classes/fa14/cse240A-a/pdf/04/Gonzalez_Processor_Microarchitecture_2010_Claypool.pdf)]
+
 ## 手册
 
 RISC-V 指令手册卷 I（非特权指令） [[PDF](https://github.com/riscv/riscv-isa-manual/releases/download/Ratified-IMAFDQC/riscv-spec-20191213.pdf)]
