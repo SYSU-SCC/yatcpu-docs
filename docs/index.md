@@ -63,8 +63,8 @@ YatCPU (**Y**et **a**nother **t**oy CPU，逸芯) 是一款开源、开发中的
     - [ ] 移植到更多的开发板，如 [ZedBoard](https://digilent.com/reference/programmable-logic/zedboard/start) 等
 - [x] VGA 输出，显示更多的调试信息
 - [x] 运行 C 语言编译的程序
-    - [ ] 通过 RISC-V 指令兼容性测试
-    - [ ] 运行 CoreMark
+    - [x] 通过 RISC-V 指令兼容性测试
+    - [x] 运行 CoreMark
 - [ ] 启动操作系统
     - [ ] [FreeRTOS](https://www.freertos.org/)
     - [ ] [Yat-sen OS](https://github.com/NelsonCheung-cn/yatsenos-riscv)

@@ -78,7 +78,16 @@ docker run -it --rm -v yatcpu:/root/yatcpu howardlau1999/yatcpu
 
 ![images/idea-4.png](images/idea-4.png)
 
-下载。
+下载。如果没有弹出提示，请展开下方帮助按照指引手动下载 JDK。
+
+???tips "手动下载 JDK"
+    如果没有弹出提示，按 ++ctrl+alt+shift+s++ 打开设置，选择左边的 Project（项目）选项，然后点击 JDK 下拉菜单，移动到添加 JDK 上，选择下载 JDK。
+    
+    ![download-jdk-0](images/download-jdk-0.png)
+    
+    之后在弹出的对话框中选择需要下载的版本，点击下载即可。
+    
+    ![download-jdk-1](images/download-jdk-1.png)
 
 ![images/idea-5.png](images/idea-5.png)
 
