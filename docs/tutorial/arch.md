@@ -16,7 +16,7 @@ By: [:material-github: howardlau1999](https://github.com/howardlau1999)
 
 流水线总体架构分为取指（IF）、译码（DE）、执行（EX）、访存（MEM）和写回（WB）五个阶段，如下图所示：
 
-![pipeline](images/five_stage_pipeline_cpu_structure.jpg)
+![pipeline](images/five_stage_pipeline_cpu_structure.png)
 
 #### 取指（InstructionFetch）
 
