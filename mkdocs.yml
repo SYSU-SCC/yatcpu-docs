@@ -13,6 +13,8 @@ nav:
     - 处理器架构: "tutorial/arch.md"
     - "RV32I 指令集": "tutorial/rv32i.md"
     - 编译与链接: "tutorial/compile-and-link.md"
+    - "CMake 入门": "tutorial/cmake.md"
+    - 运行程序: "tutorial/running-programs.md"
     - 中断和异常: "tutorial/interrupt-and-exception.md"
     - 总线: "tutorial/bus.md"
   - 实验: 
