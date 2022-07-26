@@ -7,8 +7,15 @@
 
 ### 安装必要组件
 
-为了进行新框架的测试，我们需要安装的必要组件有：python3.6  RISCOF  RISCV-GNU-Toolchain sail Architectual-Tests。 <br>
-请参考 [https://riscof.readthedocs.io/en/latest/installation.html] 的quickstart章节进行必要组件的安装（注意无需做完quickstart，只需完成3.1、3.2、3.4、3.5(sail)、3.7）。
+为了进行新框架的测试，我们需要安装的必要组件如下：
+
+-python3.6   
+-RISCOF   
+-RISCV-GNU Toolchain   
+-sail   
+-Architectual Tests
+
+请参考 https://riscof.readthedocs.io/en/latest/installation.html 的quickstart章节进行必要组件的安装（注意无需做完quickstart，只需完成3.1、3.2、3.4、3.5(sail)、3.7）。
 
 ### 编译仿真器代码
 
@@ -16,7 +23,7 @@
 
 ### 修改config.ini文件
 
-请修改riscof-target/config.ini中的路径。将所有[/home/tuyue/git-repos/tmp/yatcpu]修改为[YOUR-PATH/yatcpu]。
+请修改``riscof-target/config.ini``中的路径。将所有``/home/tuyue/git-repos/tmp/yatcpu``修改为``YOUR-PATH/yatcpu``。
   
 ### 运行测试
 ```
