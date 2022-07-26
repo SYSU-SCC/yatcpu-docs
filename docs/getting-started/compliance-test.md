@@ -30,6 +30,7 @@
 cd riscof-target
 riscof --verbose info run --config ./config.ini --suite YOUR-PATH/riscv-arch-test/riscv-test-suite/rv32i_m --env YOUR-PATH/riscv-arch-test/riscv-test-suite/env
 ```
+测试通过后会生成一个html格式的报告。
 
 ## 旧框架测试
 RISC-V 合规性测试仅支持使用 Makefile 与 gcc 编译器运行，如果你使用的是 Windows，那么你应当配置好 mingw 环境，以便运行测试。如果你已经配置好 Verilator，那么合规性测试应当也可以正常运行。
