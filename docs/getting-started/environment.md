@@ -112,7 +112,7 @@ docker run -it --rm -v yatcpu:/root/yatcpu howardlau1999/yatcpu
 
 ### 安装 Vivado
 
-中山大学组成原理实验课使用的 [Basys3](https://www.stepfpga.com/doc/_media/basys3_ss.pdf) 实验板型号为 XC7A35T，需要 Xilinx 的工具进行综合实现以及烧板。这里安装 `Vivado HL WebPACK` 即可，不需要许可或激活许可密钥。
+中山大学组成原理实验课使用的 [Basys3](https://www.stepfpga.com/doc/_media/basys3_ss.pdf) 实验板型号为 XC7A35T，需要 Xilinx 的工具进行综合实现以及烧板。这里安装 `Vitis` 即可，不需要许可或激活许可密钥。
 
 经过测试且可用的 Vivado 版本为 2020.1。更新或更旧的版本理论上可以使用，但没有经过测试。
 
@@ -297,7 +297,7 @@ sudo apt install sbt
 
 ### 安装 Vivado
 
-中山大学组成原理实验课使用的 [Basys3](https://www.stepfpga.com/doc/_media/basys3_ss.pdf) 实验板型号为 XC7A35T，需要 Xilinx 的工具进行综合实现以及烧板。这里安装 `Vivado HL WebPACK` 即可，不需要许可或激活许可密钥。
+中山大学组成原理实验课使用的 [Basys3](https://www.stepfpga.com/doc/_media/basys3_ss.pdf) 实验板型号为 XC7A35T，需要 Xilinx 的工具进行综合实现以及烧板。这里安装 `Vitis` 即可，不需要许可或激活许可密钥。
 
 经过测试且可用的 Vivado 版本为 2020.1。更新或更旧的版本理论上可以使用，但没有经过测试。
 
@@ -335,9 +335,9 @@ cd Xilinx_Unified_2020.1_0602_1208
 ./xsetup -b ConfigGen
 ```
 
-先输入 `2` 再输入 `1`，这时会选中 `Vivado HL WebPACK`。最后会产生一个默认配置文件 `~/.Xilinx/install_config.txt`。
+输入 `1`，会产生一个默认配置文件 `~/.Xilinx/install_config.txt`。
 
-随后再次执行下述指令，安装 `Vivado HL WebPACK`。
+随后再次执行下述指令，安装 `Vitis`。
 
 ```bash
 ./xsetup -a XilinxEULA,3rdPartyEULA,WebTalkTerms -b Install \
