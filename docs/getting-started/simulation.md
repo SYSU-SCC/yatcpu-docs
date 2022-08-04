@@ -101,6 +101,7 @@ make vivado-sim
 不同软件生成的 VCD 文件路径不一样：
 
 - Vivado: `vivado/riscv-basys3/riscv-basys3.sim/sim_1/behav/xsim/dump.vcd`
+- Verilator：`-vcd` 选项指定的文件路径
 - 测试时生成：`test_run_dir` 目录下的各个子目录中的 `.vcd` 文件
 
 如果你的操作系统带有 GUI 图形界面，可以使用 [GTKWave](http://gtkwave.sourceforge.net/)，点击 "File->Open New Tab..." 打开对应的文件查看波形。
