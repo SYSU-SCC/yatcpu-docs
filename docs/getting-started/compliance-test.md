@@ -10,29 +10,25 @@
 
 为了进行新框架的测试，我们需要安装的必要组件如下：
 
-- 1.Python3.6  pip3 
-- 2.RISCOF   
-- 3.RISCV-GNU Toolchain   
-- 4.spike   
-- 5.Architectual Tests
+- Python3.6 以及 pip3 
+- RISCOF   
+- RISCV-GNU Toolchain   
+- Spike   
+- Architectual Tests
 
-1.Python3.6  pip3 
-
-请自行安装Python3.6以及pip3
-
-2.RISCOF
+首先自行安装 Python 3 以及 pip，然后安装 RISCOF：
 
 ```
 pip3 install git+https://github.com/riscv/riscof.git
 ```
 
-3.RISCV-GNU Toolchain 
+安装 RISCV-GNU Toolchain 以编译测试程序：
 
 ```
 sudo apt install binutils-riscv64-unknown-elf gcc-riscv64-unknown-elf
 ```
 
-4.spike
+编译 Spike 模拟器，作为参考实现：
 
 ```
 sudo apt-get install device-tree-compiler
@@ -45,9 +41,8 @@ make
 sudo make install
 ```
 
-5.Architectual Tests
+使用下面的命令将 Architectual Tests 克隆到当前文件夹
 
-下面的命令会在将Architectual Tests克隆到当前文件夹
 ```
 riscof --verbose info arch-test --clone
 ```
@@ -65,11 +60,11 @@ riscof --verbose info run --config ./config.ini --no-browser --suite YOURPATH/ri
 --env YOURPATH/riscv-arch-test/riscv-test-suite/env
 ```
 
-测试通过后会生成一个 HTML 格式的报告。报告位于riscof-target/rsicof_work/report.html
+测试通过后会生成一个 HTML 格式的报告。报告位于 `riscof-target/rsicof_work/report.html`。
 
-### 关于riscof
+### 关于 riscof
 
-更多关于新测试框架riscof的资料，请参考官方文档<https://riscof.readthedocs.io/en/latest/index.html>
+更多关于新测试框架 riscof 的资料，请参考[官方文档](https://riscof.readthedocs.io/en/latest/index.html)。
 
 ## 旧框架测试
 
@@ -81,7 +76,7 @@ RISC-V 合规性测试仅支持使用 Makefile 与 gcc 编译器运行，如果�
 
 ### 克隆合规性测试仓库
 
-合规性测试仓库位于 [https://github.com/riscv-non-isa/riscv-arch-test](https://github.com/riscv-non-isa/riscv-arch-test)，旧框架是该仓库的一个分支。在和yatcpu同级（注意不要克隆到yatcpu内）处运行下面的命令。
+合规性测试仓库位于 [https://github.com/riscv-non-isa/riscv-arch-test](https://github.com/riscv-non-isa/riscv-arch-test)，旧框架是该仓库的一个分支。在和 yatcpu 同级的目录下（注意不要克隆到 yatcpu 内）运行下面的命令。
 
 ```
 git clone -b old-framework-2.x https://github.com/riscv-non-isa/riscv-arch-test.git
