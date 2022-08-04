@@ -2,11 +2,21 @@
 
 By: [:material-github: wu-kan](https://github.com/wu-kan)
 
-执行下述指令可以下载代码并模拟运行本项目的测试，首次运行时需要联网自动下载必要的组件。
+## IDE 操作
+
+以 Intellij IDEA IDE 为例，打开 `src/test` 目录下任意一个测试，在右边的代码编辑区域，在一些代码行的左边会显示绿色三角形图标，单击即可运行测试。
+
+![idea-test-0](images/idea-test-0.png)
+
+测试结果会显示在窗口下方，如果有测试不通过也是正常的：
+
+![idea-test-1](images/idea-test-1.png)
+
+## 命令行操作
+
+在项目目录执行下述指令可以模拟运行本项目的测试，首次运行时需要联网自动下载必要的组件。
 
 ```bash
-git clone https://github.com/howardlau1999/yatcpu 
-cd yatcpu
 sbt test
 ```
 
@@ -23,10 +33,4 @@ sbt test
 
 ```bash
 [success] Total time: 385 s (06:25), completed Dec 15, 2021, 8:45:25 PM
-```
-
-输入如下指令，可以编译生成适用于 Basys 3 开发板的 Verilog 代码 `verilog/basys3/Top.v`。
-
-```bash
-make basys3
 ```
