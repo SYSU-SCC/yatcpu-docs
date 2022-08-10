@@ -38,7 +38,7 @@ Docker 会自动下载我们准备好的镜像并运行容器。如果成功执�
 Docker 中的 YatCPU 代码可能不是最新版，且容器结束运行之后所有修改都将丢失，如果你需要完成实验，需要先将代码仓库克隆到本机，然后在运行 Docker 容器时挂载本机目录：
 
 ```
-git clone https://github.com/howardlau1999/yatcpu
+git clone --recursive https://github.com/howardlau1999/yatcpu
 docker run -it --rm -v yatcpu:/root/yatcpu howardlau1999/yatcpu
 ```
 
