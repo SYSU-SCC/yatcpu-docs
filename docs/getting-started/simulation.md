@@ -107,12 +107,14 @@ make vivado-sim
 如果你的操作系统带有 GUI 图形界面，可以使用 GTKWave
 
 - [Windows 版本](https://sourceforge.net/projects/gtkwave/files/gtkwave-3.3.100-bin-win64/)，解压后双击运行 `bin\gtkwave.exe`
-- [macOS 版本](https://sourceforge.net/projects/gtkwave/files/gtkwave-3.3.107-osx-app/)）
+- [macOS 版本](https://sourceforge.net/projects/gtkwave/files/gtkwave-3.3.107-osx-app/)
 - [Linux 源码](https://sourceforge.net/projects/gtkwave/files/gtkwave-3.3.111/)
 
 点击 "File->Open New Tab..." 打开对应的文件查看波形。
 
 ![gtkwave-windows](images/gtkwave.png)
+
+界面左侧是按照模块组织的树形结构，右键点击在菜单中选择 "Insert" 就可以将信号添加到窗口中了。
 
 ### 使用 Vivado 查看 WDB 格式波形
 
