@@ -220,7 +220,7 @@ when(io.memory_read_enable) {
 
 ## 全局测试
 
-请在lab1下运行 `sbt test` 该命令会执行所有测试（包括上述测试和运行asmbin文件的测试）。
+请在lab1下运行 `sbt test` 。该命令会执行所有测试（包括上述测试和运行asmbin文件的测试）。
 
 > 任务：请调试代码，使其通过 `sbt test`
 
