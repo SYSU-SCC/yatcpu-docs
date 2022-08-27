@@ -71,22 +71,22 @@ Chisel 3 严格意义上并不是 Verilog 的等价替代，而是一个生成�
 ## Chisel 3 项目结构
 
 同学们在进行本次实验的过程中无需了解整个项目的所有文件，只需要专注与src/main/scala下的chisel代码文件即可。不过为了避免困惑，还是在此为大家介绍一下本项目的结构。
-
-\- coremark (cpu 性能测试) <br>
-\- csrc    (存放c语言文件)<br>
-\- project (sbt的插件以及配置文件)<br>
-\- src <br>
-$~~~~$ \- main<br>
-$~~~~~~~~$ \- resources (资源文件) <br>
-$~~~~~~~~$ \- scala  (chisel 3源代码) <-- 你需要编写代码的地方<br>
-$~~~~$ \- test<br>
-$~~~~~~~~$ \- scala (chisel 3测试代码)  <br>
-$~~~~$ \- target (sbt生成的文件)<br>
-$~~~~$ \- test_run_dir (运行测试时生成的文件)<br>
-$~~~~$ \- verilog (verilog 代码)<br>
-$~~~~$ \- vivado (tcl脚本以及约束文件) <br>
-$~~~~$ \- build.sbt (sbt 配置文件)<br>
-
+```
+- coremark              # cpu 性能测试
+- csrc                  # 存放c语言文件
+- project               # sbt的插件以及配置文件
+- src 
+    - main
+    - resources         # 资源文件
+        - scala         # chisel 3源代码 <--
+    - test
+        - scala         # chisel 3测试代码 
+- target                # sbt生成的文件
+- test_run_dir          # 运行测试时生成的文件
+- verilog               # verilog 代码
+- vivado                # tcl脚本以及约束文件
+- build.sbt             # sbt 配置文件
+```
 ## Chisel 3 验证方法
 
 为了验证 Chisel 3 代码的正确性，在编写完Chisel 3代码后同学们还需要进行的工作有：
@@ -96,6 +96,9 @@ $~~~~$ \- build.sbt (sbt 配置文件)<br>
 - 将 Chisel 3 编译成 verilog 从而进行烧板
 
 下面将通过一个简单的 Chisel 3 七段数码管程序向同学们展示如何进行单元测试、波形图调试以及烧板。
+
+
+
 
 
 

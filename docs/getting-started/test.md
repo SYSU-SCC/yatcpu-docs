@@ -20,6 +20,13 @@ By: [:material-github: wu-kan](https://github.com/wu-kan)
 sbt test
 ```
 
+如果要运行单个测试，比如只运行InsturctionDecoderTest，执行下面命令。
+```
+sbt "testOnly InstructionDecoderTest"
+```
+
+
+
 ???+tips "设置代理"
     如果下载失败或者网络不稳定，可以尝试设置代理。请根据自己的实际情况填写代理地址。
     ```bash
