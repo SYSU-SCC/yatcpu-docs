@@ -17,18 +17,18 @@ nav:
     - 运行程序: "tutorial/running-programs.md"
     - 中断和异常: "tutorial/interrupt-and-exception.md"
     - 总线: "tutorial/bus.md"
-  - 实验: 
+  - 实验:
     - 简介: "labs/index.md"
     - "实验零 实验工具入门": "labs/lab0-getting-started.md"
     - "实验一 单周期 CPU": "labs/lab1-single-cycle-cpu.md"
-    - "实验二 流水线 CPU": "labs/lab2-pipelined-cpu.md"
-    - "实验三 中断": "labs/lab3-interrupt.md"
+    - "实验二 中断": "labs/lab2-interrupt.md"
+    - "实验三 流水线 CPU": "labs/lab3-pipelined-cpu.md"
     - "实验四 总线": "labs/lab4-bus.md"
     - "实验五 应用程序验证": "labs/lab5-application.md"
   - FAQ: "faq/index.md"
   - 参考资料: "references/index.md"
   - 致谢: "acknowledgement/index.md"
-  - 附录: 
+  - 附录:
     - 简介: "appendix/index.md"
 
 site_name: YatCPU 实验文档
