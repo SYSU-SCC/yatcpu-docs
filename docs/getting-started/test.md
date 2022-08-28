@@ -22,7 +22,7 @@ sbt test
 
 如果要运行单个测试，比如只运行InsturctionDecoderTest，执行下面命令。
 ```
-sbt "testOnly InstructionDecoderTest"
+sbt "testOnly riscv.singlecycle.InstructionDecoderTest"
 ```
 
 

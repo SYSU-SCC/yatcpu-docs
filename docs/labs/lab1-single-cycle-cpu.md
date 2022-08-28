@@ -1,10 +1,8 @@
 # 实验一 单周期 CPU
 
-单周期CPU一条指令的执行在一个时钟周期内完成。
+单周期CPU一条指令的执行在一个时钟周期内完成。由于时钟周期是固定的，所以执行所有指令都必须和执行最慢指令耗费一样的时间，这导致单周期cpu性能很差。单周期cpu同一时刻只运行一条指令，指令间不会产生冲突，所以实现起来是最简单的。
 
-由于时钟周期是固定的，所以执行所有指令都必须和执行最慢指令耗费一样的时间，这导致单周期cpu性能很差。单周期cpu同一时刻只运行一条指令，指令间不会产生冲突，所以实现起来是最简单的。
-
-本实验的目的是让大家理解cpu的基本结构以及cpu是如何执行指令的。我们会先向大家介绍一些基本概念，然后会结合代码细致说明指令执行的步骤（期间会留有填写代码的任务，请记得完成）。
+本实验的目的是让大家理解cpu的基本结构以及cpu是如何执行指令的。我们会先向大家介绍一些基本概念，然后会按照指令执行的步骤逐步构造数据通路和控制单元（期间会留有填写代码的任务，请记得完成），最终构造成一个简单的单周期RISC-V处理器。
 
 
 ## 单周期cpu结构图
@@ -15,76 +13,59 @@
 
 ## 数据通路 
 
-数据在功能部件之间传送的路径称为数据通路。路径上执行必要功能的部件称为数据通路部件，如ALU、通用寄存器、内存等。
-
-数据通路显示了数据从一个组件流向另一个组件的所有方式。
+数据在功能部件之间传送的路径称为数据通路。路径上操作或保存数据的部件称为数据通路部件，如ALU、通用寄存器、内存等。数据通路显示了数据从一个组件流向另一个组件的所有方式。
 
 ## 控制信号
 
-顾名思义，控制信号控制数据通路。每当有决定要做出时，控制器就必须做出正确的决定并将控制信号发给相应的数据通路部件。例如：alu是进行加法还是减法？我们是要从内存中读取还是写入？
+顾名思义，控制信号控制数据通路。每当有决定要做出时，控制器单元就必须做出正确的决定并将控制信号发给相应的数据通路部件。例如：alu是进行加法还是减法？我们是要从内存中读取还是写入？
 
-那么控制器如何弄清楚需要做什么呢？这完全取决于我们正在执行的指令。在RISC-V指令格式中，控制器通过指令的opcode、funct3、funct7字段得知该做出什么决定，从而发出正确的控制信号。
+那么控制器如何弄清楚需要做什么呢？这完全取决于我们正在执行的指令。在RISC-V指令格式中，控制器通过指令的opcode、funct3、funct7字段得知该做出什么决定，从而发出正确的控制信号。cpu原理图中的Decoder、ALUControl、JumpJudge三个原件都可以看作控制单元。他们接收指令并输出控制信号。控制信号引导数据通过数据路径，以便指令正确执行。
 
-cpu原理图中的Decoder、ALUControl、JumpJudge三个原件都可以看作控制器。他们接收指令并输出控制信号。
+## 组合单元与状态单元
 
-控制信号引导数据通过数据路径，以便指令正确执行。
+我们知道数字电路里有两大类型的电路，一种是组合逻辑电路，另外一种是时序逻辑电路。在cpu设计中，这两种电路构成的单元分别叫做组合单元和状态单元。本实验中只有寄存器属于状态单元（内存不属于cpu内核的范畴），其余的均为组合单元。
 
-## 组合逻辑与时序逻辑
-
-我们知道数字电路里有两大类型的电路，一种是组合逻辑电路，另外一种是时序逻辑电路。
-
-在cpu设计中，这两种电路的不同之处体现在：组合逻辑电路不需要时钟作为触发条件，因此输入会立即(不考虑延时)反映到输出。时序逻辑电路以时钟作为触发条件，时钟的上升沿到来时输入才会反映到输出。本实验中只有寄存器属于时序电路，其余的均为组合逻辑。
-
-组合逻辑有时会造成竞争和冒险。
-
-- 竞争：在组合电路中，信号经由不同的途径达到某一会合点的时间有先有后，这种现象称为竞争。
-
-- 冒险：由于竞争而引起电路输出发生瞬间错误现象称为冒险。表现为输出端出现了原设计中没有的窄脉冲，常称其为毛刺。
-
-在完成本实验后，请大家思考一个问题：在add指令中，寄存器堆写使能控制信号在译码阶段被置1，这时add的计算结果还没出来，那么寄存器堆是否会被写入错误数据？如果会，那么为什么指令的执行却没有出错呢？
+- 组合单元：输出只取决于当前的输入，并且不需要时钟作为触发条件，输入会立即(不考虑延时)反映到输出。
+- 状态单元：存储了状态，并且以以时钟作为触发条件，时钟的上升沿到来时输入才会反映到输出。
 
 
-## 执行指令的步骤
+## 实现方式概述
 
-一般来说执行一条指令最多需要五个步骤：
+我们设计的RISC-V cpu能执行RISC-V指令的一个核心子集（RV32I）：
+- 算术逻辑指令：add、sub、slt等。
+- 存储器访问指令：lb、lw、sb等。
+- 分支指令：beq、jar等。
 
+我们将执行指令分为五个步骤：
 - 取指：从内存中获取指令数据。
 - 译码：弄清楚这条指令的意义，并读取寄存器数据。
 - 执行：用ALU计算结果。
 - 访存（load/store指令）：读写内存。
-- 回写（部分指令）：将结果写回寄存器。
+- 回写（除了store指令外所有指令）：将结果写回寄存器。
 
-下面我们结合代码对每个步骤进行分析。(下面涉及的代码都位于 `lab1/src/main/scala/riscv` 目录下)
+下面我们结合代码，按照上述步骤逐步构建数据通路。(下面涉及的代码都位于 `lab1/src/main/scala/riscv` 目录下)
 
 ### 取指 
 
 代码位于 `core/InstructionFetch.scala`
 
-取指阶段，在时钟上升沿到来时pc寄存器的值发生变化，从而在内存中读出下一条指令。
+取指阶段要做的：
+- 从内存将指令取出
+- 修改pc寄存器的值使其指向下一条指令。
 
 ```
-val pc = RegInit(ProgramCounter.EntryAddress)
-```
-首先pc寄存器的值被初始化为程序的入口地址。
+  val pc = RegInit(ProgramCounter.EntryAddress)
 
-```
-when(io.instruction_valid) {
-  when(io.jump_flag_id){
-    pc := io.jump_address_id
-  }.otherwise {
-    pc := pc + 4.U
-  }
-  io.instruction := io.instruction_read_data
-}.otherwise{
-  pc := pc
-  io.instruction := 0x00000013.U
-}
-io.instruction_address := pc
+  when(io.instruction_valid) {
+    io.instruction := io.instruction_read_data
+    // lab1(InstructionDecode)
+    ...
 ```
 
-指令有效时，如果需要跳转则pc指向跳转地址，否则pc+4（指向下一条指令）。
 
-值得注意的是，如果没有pc寄存器的话就无法利用时钟驱动指令的执行。
+首先pc寄存器的值被初始化为程序的入口地址。当指令有效时，先取出当前pc指向的指令，然后如果需要跳转则pc指向跳转地址，否则pc+4。请同学们将修改pc寄存器的代码补充完整。
+
+> 任务：请在`core/InstructionFetch.scala` 的 `// lab1(InstructionFetch)` 注释处填入代码，使其能通过 `InstructionFetchTest`
 
 ???+tips "clk"
     chisel 3每个模块都有一个隐藏的时钟信号，模块中的每个寄存器都使用这个时钟信号
@@ -94,7 +75,7 @@ io.instruction_address := pc
 
 代码位于 `core/InstructionDecode.scala`
 
-译码阶段要做的是：
+译码阶段要做的：
 
 - 读取寄存器操作数以及立即数
 
@@ -123,18 +104,31 @@ val immediate = MuxLookup(
 ```
 上面的代码获取立即数。由于不同指令类型立即数的位置不同，所以要利用opcode区分指令类型，然后获取对应位置的立即数。
 
-后面的代码则是为控制信号赋值。以 ex_aluop1_source 控制信号为例。该控制信号控制ALU的第一个操作数的输入。当ex_aluop1_source为0时，ALU的第一个操作数为rs1寄存器的值。当ex_aluop1_source为1时，ALU的第一个操作数为指令地址。
+
 
 ```
+object ALUOp1Source {
+  val Register = 0.U(1.W)
+  val InstructionAddress = 1.U(1.W)
+}
+...
+
 io.ex_aluop1_source := Mux(
   opcode === Instructions.auipc || opcode === InstructionTypes.B || opcode === Instructions.jal,
   ALUOp1Source.InstructionAddress,  
   ALUOp1Source.Register
 )
 ```
-上面的代码表示，当指令的opcode字段显示该指令属于Btype，或者该指令是jal，又或者该指令是auipc时，将ex_aluop1_source赋值为1(ALUOp1Source.InstructionAddress)。否则赋值为0(ALUOp1Source.Register)。
+以 ex_aluop1_source 控制信号为例。该控制信号控制ALU的第一个操作数的输入。通过opcode识别指令类型，从而为 ex_aluop1_source 赋值。当指令类型属于auipc、jal或B类时，ex_aluop1_source置为0，控制ALU第一个操作数的输入为指令地址；其他情况ex_aluop1_source置为1，控制ALU第一个操作数的输入为寄存器。
 
-可见译码单元的设计也是很简单的组合逻辑，下面请同学们补充为 `ex_aluop1_source`、`io.memory_read_enable`、`io.memory_write_enable`、`io.wb_reg_write_source` 四个控制信号赋值的代码。
+可见译码单元的设计也是很简单的组合逻辑，知晓控制信号与指令的映射关系即可完成。下面请同学们补充为 `ex_aluop2_source`、`io.memory_read_enable`、`io.memory_write_enable`、`io.wb_reg_write_source` 四个控制信号赋值的代码。
+
+| 控制信号      | 含义 |
+| ----------- | ----------- |
+| ex_aluop2_source  | alu输入来源  |
+| memory_read_enable   |   内存读使能 |
+| memory_write_enable |   内存写使能 |
+| wb_reg_write_source |   写回数据来源    |
 
 > 任务：请在`core/InstructionDecode.scala` 的 `// lab1 InstructionDecode` 注释处填入代码，使其能通过 `InstructionDecoderTest`
 
@@ -184,7 +178,7 @@ io.if_jump_flag :=
 ```
 val mem_address_index = io.alu_result(log2Up(Parameters.WordSize) - 1, 0).asUInt
 ```
-这里获取读写内存的地址。
+首先获取读写内存的地址。
 
 ```
 when(io.memory_read_enable) {
@@ -228,9 +222,11 @@ when(io.memory_read_enable) {
 
 代码位于 `core/WriteBack.scala`
 
-写回阶段，将计算得到的数据或内存读取的数据写入寄存器。
+写回阶段，将计算得到的数据或内存读取的数据写入寄存器。写回阶段的代码逻辑简单，不在此赘述。
 
-写回阶段的代码逻辑简单，不在此赘述。
+## 全局测试
+
+> 请调试代码，使其通过 `sbt test`
 
 ## 提交 Autograder
 
