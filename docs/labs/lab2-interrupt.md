@@ -41,7 +41,7 @@ CSR相关操作指令集的细节，包括指令的语义，编码等，都可�
 
 首先获取CPU下一个状态的信息，然后一个周期内把相应的内容写入到相应的寄存器。具体内容为：
    
-- `mepc`：保存的是中断或者异常处理完成后，CPU返回并开始执行的地址。所以对于异常和中断，`mepc`的保存内容需要注意。
+- `mepc`：保存的是中断或者异常处理完成后，CPU返回并开始执行的地址。所以对于异常和中断，`mepc` 的保存内容需要注意。
 - `mcause`：保存的是导致中断或者异常的原因，具体内容请查阅特权级手册里的相关内容。
 - `mstatus`：在响应中断时，需要将 `mstatus` 寄存器中的 `MPIE` 标志位设置为 `0`，禁用中断。 
 
@@ -56,7 +56,7 @@ CSR相关操作指令集的细节，包括指令的语义，编码等，都可�
 
 ###  关于CLINT的实现
 
-CLINT 具体的实现方法很多，为了简单起见，我们采用纯组合逻辑实现这个中断控制器。(目前 YatCPU 的主仓库的 CLINT 采用状态机来实现)
+CLINT 具体的实现方法很多，为了简单起见，我们采用纯组合逻辑实现这个中断控制器。（目前 YatCPU 的主仓库的 CLINT 采用状态机来实现）
 由于基于单周期 CPU 且 CLINT 是组合逻辑，所以外部中断到来时，CLINT 会马上响应。
 
 CLINT 需要一个周期就把多个寄存器的内容修改的功能，而正常的 CSR 指令只能对一个寄存器读-修改-写（Read-Modify-Write, RMW）。所以 CLINT 和 CSR 之间有独立的优先级更高的通路，用来快速更新 CSR 寄存器的值。
@@ -93,6 +93,6 @@ CLINT 的代码文件位于 `src/main/scala/riscv/core/CLINT.scala`
 
 Timer 的代码位于 `src/main/scala/riscv/peripheral/Timer.scala`
 
-在上面提到的 EX、CSR、CLINT、Timer 四个单元的相应文件里面，请在 `// lab2(CLINTCSR)` 注释处填入相应的代码，使其能够通过`CPUTest`、`ExecuteTest`、`CLINTCSRTest`、`TimerTest` 测试。
+在上面提到的 EX、CSR、CLINT、Timer 四个单元的相应文件里面，请在 `// lab2(CLINTCSR)` 注释处填入相应的代码，使其能够通过 `CPUTest`、`ExecuteTest`、`CLINTCSRTest`、`TimerTest` 测试。
 
 如果能够正确完成本次实验，那么你的 CPU 就可以运行更加复杂的程序了，可以运行一下俄罗斯方块程序试试，如果想要上手玩的话，也许需要一个串口转接板，这样就可以通过电脑的键盘通过 UART 串口给程序输入字符了。
