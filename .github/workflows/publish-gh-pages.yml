@@ -36,6 +36,8 @@ jobs:
         run: pip3 install -r requirements.txt
       - name: Build site
         run: mkdocs build
+        env:
+          TZ: "Asia/Shanghai"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
