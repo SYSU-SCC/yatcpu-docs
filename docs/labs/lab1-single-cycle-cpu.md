@@ -43,7 +43,7 @@
 - 访存（load/store指令）：读写内存。
 - 回写（除了store指令外所有指令）：将结果写回寄存器。
 
-下面我们结合代码，按照上述步骤逐步构建数据通路。(下面涉及的代码都位于 `lab1/src/main/scala/riscv` 目录下)
+下面我们先按照上述步骤逐步构建数据通路部件，然后在cpu顶层模块将这些数据通路部件实例化并且连接起来。(下面涉及的代码都位于 `lab1/src/main/scala/riscv` 目录下)
 
 ### 取指 
 
@@ -199,9 +199,7 @@ when(io.memory_read_enable) {
       InstructionsTypeL.lbu -> MuxLookup(
       ...
 ```
-上面的代码用于读取内存。首先从总线读取数据data，然后根据指令的不同对数据进行不同的处理（例如lb指令进行符号扩展，lbu指令进行0扩展，lh读取双字节等）并赋给io.wb_memory_read_data，用于写回。下面请同学们填写lh指令对数据进行处理的代码。
-
-> 任务：请在`core/MemoryAccess.scala` 的 `// lab1 MemoryAccess` 注释处填入代码，使其能通过 `MemoryAccessTest`
+上面的代码用于读取内存。首先从总线读取数据data，然后根据指令的不同对数据进行不同的处理（例如lb指令进行符号扩展，lbu指令进行0扩展，lh读取双字节等）并赋给io.wb_memory_read_data，用于写回。
 
 ```
 .elsewhen(io.memory_write_enable) {
@@ -220,13 +218,48 @@ when(io.memory_read_enable) {
 
 ## 写回
 
-代码位于 `core/WriteBack.scala`
+代码位于 `core/WriteBack.scala` 
 
-写回阶段，将计算得到的数据或内存读取的数据写入寄存器。代码非常简单，不再赘述。不过请同学们思考一个问题：写使能信号在译码阶段就产生了，此时正确的写回数据还没有算出（或从内存读出），那么错误的写回数据会被写入寄存器堆吗？为什么？
+写回阶段，将计算得到的数据或内存读取的数据写入寄存器。
 
-## 全局测试
+写回模块只是一个多路选择器，代码非常简单，不再赘述。不过请同学们思考一个问题：写使能信号在译码阶段就产生了，此时正确的写回数据还没有算出（或从内存读出），那么错误的写回数据会被写入寄存器堆吗？为什么？
 
-> 请调试代码，使其通过 `sbt test`
+
+## cpu
+
+代码位于 `core/cpu.scala`
+
+我们已经实现了构建cpu所需要的所有部件。下面我们需要按照单周期cpu结构图将上面的部件实例化并且连接起来。
+
+```
+class CPU extends Module {
+  val io = IO(new CPUBundle)
+```
+CPUBundleJ是cpu和内存等外设进行数据交换的通道。
+
+```
+  val regs = Module(new RegisterFile)
+  val inst_fetch = Module(new InstructionFetch)
+  val id = Module(new InstructionDecode)
+  val ex = Module(new Execute)
+  val mem = Module(new MemoryAccess)
+  val wb = Module(new WriteBack)
+```
+这里实例化了各个模块。
+
+```
+  inst_fetch.io.jump_address_id := ex.io.if_jump_address
+  inst_fetch.io.jump_flag_id := ex.io.if_jump_flag
+```
+以上面两个线路为例，大家在cpu原理图中可以看到相应的线路。
+
+![images/connect.png](images/connect.png)
+
+请同学们观察Execute模块输入端口代码以及cpu结构图，填写Execute模块的输入与其他模块输出的连线。
+
+> 任务：请在`core/CPU.scala` 的 `// lab1(cpu)` 注释处填入代码，并在lab1下运行 `sbt test`。
+
+`sbt test`会执行包括CPUTest以及上述所有测试，这一步完成后我们就成功构造出了一个RISC-V单周期cpu了!
 
 ## 提交 Autograder
 
