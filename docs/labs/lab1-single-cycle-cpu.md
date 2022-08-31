@@ -259,7 +259,7 @@ CPUBundleJ是cpu和内存等外设进行数据交换的通道。
 
 > 任务：请在`core/CPU.scala` 的 `// lab1(cpu)` 注释处填入代码，并在lab1下运行 `sbt test`。
 
-`sbt test`会执行包括CPUTest以及上述所有测试，这一步完成后我们就成功构造出了一个RISC-V单周期cpu了!
+`sbt test` 会执行包括CPUTest以及上述所有测试，这一步完成后我们就成功构造出了一个RISC-V单周期cpu了!
 
 ## 提交 Autograder
 
