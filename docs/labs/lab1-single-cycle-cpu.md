@@ -25,25 +25,25 @@
 
 我们知道数字电路里有两大类型的电路，一种是组合逻辑电路，另外一种是时序逻辑电路。在 CPU 设计中，这两种电路构成的单元分别叫做组合单元和状态单元。本实验中只有寄存器属于状态单元（内存不属于 CPU 内核的范畴），其余的均为组合单元。
 
-- 组合单元：输出只取决于当前的输入，并且不需要时钟作为触发条件，输入会立即（不考虑延时）反映到输出。
-- 状态单元：存储了状态，并且以以时钟作为触发条件，时钟的上升沿到来时输入才会反映到输出。
+- 组合单元：输出只取决于当前的输入，并且不需要时钟作为触发条件，输入会立即（不考虑延时）反映到输出
+- 状态单元：存储了状态，并且以以时钟作为触发条件，时钟的上升沿到来时输入才会反映到输出
 
 
 ## 实现方式概述
 
 我们设计的 RISC-V CPU 能执行 RISC-V 指令的一个核心子集（RV32I）：
 
-- 算术逻辑指令：`add`、`sub`、`slt` 等。
-- 存储器访问指令：`lb`、`lw`、`sb` 等。
-- 分支指令：`beq`、`jar` 等。
-
+- 算术逻辑指令：`add`、`sub`、`slt` 等
+- 存储器访问指令：`lb`、`lw`、`sb` 等
+- 分支指令：`beq`、`jar` 等
+- 
 我们将执行指令分为五个不同的阶段：
 
-- 取指：从内存中获取指令数据。
-- 译码：弄清楚这条指令的意义，并读取寄存器数据。
-- 执行：用 ALU 计算结果。
-- 访存（load/store 指令）：读写内存。
-- 回写（除了 store 指令外所有指令）：将结果写回寄存器。
+- 取指：从内存中获取指令数据
+- 译码：弄清楚这条指令的意义，并读取寄存器数据
+- 执行：用 ALU 计算结果
+- 访存（`load`/`store` 指令）：读写内存
+- 回写（除了 `store` 指令外所有指令）：将结果写回寄存器
 
 下面我们先按照上述步骤逐步构建数据通路部件，然后在 CPU 顶层模块将这些数据通路部件实例化并且连接起来。（下面涉及的代码都位于 `lab1/src/main/scala/riscv` 目录下）
 
@@ -66,7 +66,7 @@
 ```
 
 
-首先pc寄存器的值被初始化为程序的入口地址。当指令有效时，先取出当前pc指向的指令，然后如果需要跳转则pc指向跳转地址，否则pc+4。请同学们将修改pc寄存器的代码补充完整。
+首先 PC 寄存器的值被初始化为程序的入口地址。当指令有效时，先取出当前 PC 指向的指令，然后如果需要跳转则 PC 指向跳转地址，否则指向 PC+4，请你将修改 PC 寄存器的代码补充完整。
 
 !!! note "实验任务"
     请在`core/InstructionFetch.scala` 的 `// lab1(InstructionFetch)` 注释处填入代码，使其能通过 `InstructionFetchTest` 单元测试。
@@ -133,7 +133,7 @@ io.ex_aluop1_source := Mux(
 | `wb_reg_write_source` |   写回数据来源选择    |
 
 !!! note "实验任务"
-    请在`core/InstructionDecode.scala` 的 `// lab1 InstructionDecode` 注释处填入代码，使其能通过 `InstructionDecoderTest` 单元测试。
+    请在`core/InstructionDecode.scala` 的 `// lab1(InstructionDecode)` 注释处填入代码，使其能通过 `InstructionDecoderTest` 单元测试。
 
 
 ## 执行
@@ -154,7 +154,7 @@ io.mem_alu_result := alu.io.result
 上面的代码在 `Execute` 模块内实例化了 `ALU` 和 `ALUcontrol`。具体的 ALU 计算逻辑在 `ALU` 模块进行，此处只需你在 `Execute` 模块内为 `ALU` 的输入端口赋值。`ALU` 的代码位于`core/ALU.scala`。
 
 !!! note "实验任务"
-    请在`core/Execute.scala` 的 `// lab1 Execute` 注释处填入代码，使其能通过 `ExecuteTest` 单元测试。
+    请在`core/Execute.scala` 的 `// lab1(Execute)` 注释处填入代码，使其能通过 `ExecuteTest` 单元测试。
 
 ```scala
 io.if_jump_flag := 
