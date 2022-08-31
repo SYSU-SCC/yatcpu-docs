@@ -8,7 +8,6 @@
 
 - Chisel 3 的基本语法和功能
 - Chisel 3 项目结构
-- Chisel 3 的验证方法 （单元测试、波形图调试、烧板）
 
 ## Chisel 3 的基本语法和功能
 
@@ -65,37 +64,34 @@ Chisel 3 中的寄存器默认也带有 `clock` 和 `reset` 信号，所有对�
 
 Chisel 3 严格意义上并不是 Verilog 的等价替代，而是一个生成器语言。使用 Chisel 3 编写的硬件电路，需要编译成 Verilog 文件，然后再通过 EDA 软件综合实现出真正的电路。而且，为了通用性，一些 Verilog 中的特性，如负边缘触发、多时钟仿真等在 Chisel 3 中并不支持，或支持程度有限。
 
-### Chisel 3 官方教程
-...
 
 ## Chisel 3 项目结构
 
 同学们在进行本次实验的过程中无需了解整个项目的所有文件，只需要专注与src/main/scala下的chisel代码文件即可。不过为了避免困惑，还是在此为大家介绍一下本项目的结构。
 ```
-- coremark              # cpu 性能测试
-- csrc                  # 存放c语言文件
-- project               # sbt的插件以及配置文件
-- src 
-    - main
-    - resources         # 资源文件
-        - scala         # chisel 3源代码 <--
-    - test
-        - scala         # chisel 3测试代码 
-- target                # sbt生成的文件
-- test_run_dir          # 运行测试时生成的文件
-- verilog               # verilog 代码
-- vivado                # tcl脚本以及约束文件
-- build.sbt             # sbt 配置文件
+- labx
+    - coremark              # cpu 性能测试
+    - csrc                  # 存放c语言文件
+    - project               # sbt的插件以及配置文件
+    - src 
+        - main
+        - resources         # 资源文件
+            - scala         # chisel 3源代码 <--
+        - test
+            - scala         # chisel 3测试代码 
+    - target                # sbt生成的文件
+    - test_run_dir          # 运行测试时生成的文件
+    - verilog               # verilog 代码
+    - vivado                # tcl脚本以及约束文件（用于自动化烧板）
+    - build.sbt             # sbt 配置文件
 ```
-## Chisel 3 验证方法
 
-为了验证 Chisel 3 代码的正确性，在编写完Chisel 3代码后同学们还需要进行的工作有：
 
-- 单元测试
-- 波形图调试
-- 将 Chisel 3 编译成 verilog 从而进行烧板
 
-下面将通过一个简单的 Chisel 3 七段数码管程序向同学们展示如何进行单元测试、波形图调试以及烧板。
+
+
+
+
 
 
 
