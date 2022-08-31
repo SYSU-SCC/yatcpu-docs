@@ -12,12 +12,12 @@
 
 ## CSR寄存器的操作命令
 
-从预备知识[中断与异常](../tutorial/interrupt-and-exception.md)我们已经学习到了CSR寄存器的基本概念。本实验里我们在单周期CPU的基础上增加对CSR寄存器的操作指令的支持。
+从预备知识[中断与异常](../tutorial/interrupt-and-exception.md)我们已经学习到了 CSR 寄存器的基本概念。本实验里我们在单周期 CPU 的基础上增加对 CSR 寄存器的操作指令的支持。
 
 CSR相关操作指令集的细节，包括指令的语义，编码等，都可以通过阅读[非特权集手册](https://github.com/riscv/riscv-isa-manual/releases/download/Ratified-IMAFDQC/riscv-spec-20191213.pdf)的第九章获得。
 中断相关的具体CSR寄存器的内容与对应含义，请查阅[特权级手册](https://github.com/riscv/riscv-isa-manual/releases/download/Priv-v1.12/riscv-privileged-20211203.pdf)
 
-有了实现单周期CPU的经验，我们可以把对CSR指令的支持分解为：
+有了实现单周期 CPU 的经验，我们可以把对 CSR 指令的支持分解为：
 
 - **CSR 寄存器组**：CSR 寄存器是一组类似于 RegisterFile 寄存器组的，地址空间大小为 4096 字节，独立编址的寄存器。
    从指令手册可以看到对CSR寄存器的操作都是原子读写的，CSR指令具体的语义请查阅手册。
@@ -54,7 +54,7 @@ CSR相关操作指令集的细节，包括指令的语义，编码等，都可�
 
 而异常的现场保存和恢复与中断处理差不多，只不过保存和恢复的内容上有所不同而已，感兴趣的同学可以自行摸索。
 
-###  关于CLINT的实现
+###  关于 CLINT 的实现
 
 CLINT 具体的实现方法很多，为了简单起见，我们采用纯组合逻辑实现这个中断控制器。（目前 YatCPU 的主仓库的 CLINT 采用状态机来实现）
 由于基于单周期 CPU 且 CLINT 是组合逻辑，所以外部中断到来时，CLINT 会马上响应。
