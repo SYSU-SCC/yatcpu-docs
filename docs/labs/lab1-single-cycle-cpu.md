@@ -8,7 +8,7 @@
 ## 单周期 CPU 结构图
 
 数据通路用蓝线标识，控制信号用红线标识。线路和模块的命名和代码有差异。
-![images/singleCycleCPU.png](images/singleCycleCPU.png)
+![images/single_cycle_CPU.png](images/single_cycle_CPU.png)
 
 
 ## 数据通路 

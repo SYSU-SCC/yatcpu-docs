@@ -84,7 +84,6 @@ MMIO 简单来说就是：该外设用来和 CPU 交互的寄存器是与内存�
 3. 定时中断发生器可以正确产生中断信号，并且实现 Timer 寄存器的 MMIO。
 4. CLINT 能够正确的响应中断并且在中断结束后回到原来的执行流。
 
-
 EX 执行单元的代码文件位于 `src/main/scala/riscv/core/Execute.scala`
 
 CSR 寄存器组的代码文件位于 `src/main/scala/riscv/core/CSR.scala`
