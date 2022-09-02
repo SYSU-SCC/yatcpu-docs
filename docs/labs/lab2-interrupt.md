@@ -95,3 +95,7 @@ Timer 的代码位于 `src/main/scala/riscv/peripheral/Timer.scala`
 在上面提到的 EX、CSR、CLINT、Timer 四个单元的相应文件里面，请在 `// lab2(CLINTCSR)` 注释处填入相应的代码，使其能够通过 `CPUTest`、`ExecuteTest`、`CLINTCSRTest`、`TimerTest` 测试。
 
 如果能够正确完成本次实验，那么你的 CPU 就可以运行更加复杂的程序了，可以运行一下俄罗斯方块程序试试，如果想要上手玩的话，也许需要一个串口转接板，这样就可以通过电脑的键盘通过 UART 串口给程序输入字符了。
+
+## CPU架构图
+
+![](images/single_cycle_CPU_with_interrupt_support.png)
