@@ -94,7 +94,7 @@ docker run -it --rm -v yatcpu:/root/yatcpu howardlau1999/yatcpu
 再选择设置 Scala SDK。
 
 ???tips "手动下载 Scala SDK"
-    如果没有如果没有弹出提示，按 ++ctrl+alt+shift+s++ 打开设置，选择左边的 Libraries（全局库）选项，点击 + 号，选择 Scala SDK，在弹出的窗口选择下载，选择需要的版本之后点确定开始下载，然后在列表里选中刚刚下载好的版本选择添加即可。
+    如果没有如果没有弹出提示，按 ++ctrl+alt+shift+s++ 打开设置，选择左边的 Global Libraries（全局库）选项，点击 + 号，选择 Scala SDK，在弹出的窗口选择下载，选择需要的版本之后点确定开始下载，然后在列表里选中刚刚下载好的版本选择添加即可。
 
     ![download-scala-0](images/download-scala-0.png)
 
