@@ -74,7 +74,7 @@ docker run -it --rm -v yatcpu:/root/yatcpu howardlau1999/yatcpu
 
 ![images/idea-3.png](images/idea-3.png)
 
-点击图上的设置 JDK，选择下载 JDK，**版本选择 17 以及以下**。
+点击图上的设置 JDK，选择下载 JDK。
 
 ![images/idea-4.png](images/idea-4.png)
 
@@ -85,7 +85,7 @@ docker run -it --rm -v yatcpu:/root/yatcpu howardlau1999/yatcpu
     
     ![download-jdk-0](images/download-jdk-0.png)
     
-    之后在弹出的对话框中选择需要下载的版本，**版本选择 17 以及以下**，点击下载即可。
+    之后在弹出的对话框中选择需要下载的版本，点击下载即可。
     
     ![download-jdk-1](images/download-jdk-1.png)
 
