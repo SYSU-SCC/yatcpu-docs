@@ -74,7 +74,7 @@ docker run -it --rm -v yatcpu:/root/yatcpu howardlau1999/yatcpu
 
 ![images/idea-3.png](images/idea-3.png)
 
-点击图上的设置 JDK，选择下载 JDK。
+点击图上的设置 JDK，选择下载 JDK，**版本选择 17 以及以下**。
 
 ![images/idea-4.png](images/idea-4.png)
 
@@ -104,7 +104,7 @@ docker run -it --rm -v yatcpu:/root/yatcpu howardlau1999/yatcpu
 
 ![images/idea-7.png](images/idea-7.png)
 
-点下载，在跳出来的窗口中选择我们项目使用的 2.12.13 版本。
+点下载，在跳出来的窗口中选择我们项目使用的 2.13.8 版本。
 
 回到“添加 Scala 支持”窗口，在“使用库”中选中我们刚才下载的版本，点击确定。最后记得点击“加载 sbt 项目”加载项目配置。
 
