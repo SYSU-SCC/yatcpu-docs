@@ -269,6 +269,10 @@ CPUBundle 是 CPU 和内存等外设进行数据交换的通道。
 
 `sbt test` 会执行包括 CPUTest 以及上述所有单元测试，这一步完成后我们就成功构造出了一个 RISC-V 单周期 CPU 了!
 
+## 使用自定义应用测试
+
+参考[编译和链接的过程](../tutorial/compile-and-link.md)以及[CMake 入门](../tutorial/cmake.md)，编写并编译自己的程序后，修改 `CPUTest` 中的 `InstructionROM` 的指令文件地址，即可运行你自己的程序。
+
 ## 提交 Autograder
 
 完成以上所有实验并通过相应测试后，请将以下文件打包为 `.zip` 文件，并上传到 Autograder 进行进一步的测试：

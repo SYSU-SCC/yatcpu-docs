@@ -34,3 +34,21 @@ set(CMAKE_EXE_LINKER_FLAGS_INIT "-fuse-ld=lld -nostdlib -static -mno-relax")
 set(CMAKE_MODULE_LINKER_FLAGS_INIT "-fuse-ld=lld -nostdlib -static -mno-relax")
 set(CMAKE_SHARED_LINKER_FLAGS_INIT "-fuse-ld=lld -nostdlib -static -mno-relax")
 ```
+
+## 使用 CMake 生成项目并编译
+
+一个 CMake 文件中最重要的是 `add_library` 和 `add_executable` 指令。`add_library` 指令用于添加一个库目标，`add_executable` 指令用于添加一个可执行文件目标。为了方便测试，初始化程序运行栈的代码和链接脚本已经提供了，后续只需要在 `csrc` 文件夹中添加自己的 C 语言程序，并修改 `CMakeLists.txt` 文件添加可执行程序目标即可。
+
+CMake 项目的编译需要两步，第一步是运行 `cmake` 生成平台相关的编译配置文件，在 Linux 下通常是 `Makefile`，在 Windows 下通常是 `Visual Studio` 的解决方案文件，或者微软的 `nmake` 工具的配置文件。第二步是运行 `make` 或者 `nmake` 等工具进行编译。
+
+为了避免污染源代码目录，配置和编译通常在单独的文件夹中进行。项目提供的编译脚本 `build.sh`（Linux）或 `build.bat`（Windows）将配置和编译文件放在 `build` 文件夹中。
+
+如果想要添加 C 语言程序，只需要在 `CMakeLists.txt` 的开头的：
+
+```cmake
+set(C_PROGRAMS tetris hello fibonacci quicksort)
+```
+
+添加自己的 C 语言程序文件名，保存后然后重新运行一次编译脚本即可。
+
+编译出来的可执行文件放置在 `src/main/resources` 文件夹中，文件名后缀是 `.asmbin`。
