@@ -85,3 +85,6 @@ Chisel 3 严格意义上并不是 Verilog 的等价替代，而是一个生成�
     - vivado                # tcl脚本以及约束文件（用于自动化烧板）
     - build.sbt             # sbt 配置文件
 ```
+## 练习
+
+完成 [Chisel 3 在线实验](https://mybinder.org/v2/gh/freechipsproject/chisel-bootcamp/master) 的 `3.6_types` 以及之前的所有练习。
