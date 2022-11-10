@@ -1,5 +1,6 @@
 nav:
   - 前言: "index.md"
+  - 自学路径: "learning-path.md"
   - 环境准备:
     - 开始之前: "getting-started/index.md"
     - 开发环境: "getting-started/environment.md"
