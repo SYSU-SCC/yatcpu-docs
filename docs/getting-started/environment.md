@@ -18,6 +18,9 @@ By: [:material-github: wu-kan](https://github.com/wu-kan)、[:material-github: h
 
 ## Docker 配置方法
 
+!!!tips "如果你不了解什么是 Docker"
+    如果你不知道什么是 Docker，可以直接跳过这一节，按照下面的 Windows 或 Linux/WSL 配置方法在本机进行配置。
+
 该方法适用于 Windows、Linux 和 macOS 系统。
 
 首先到 [Docker 官方网站](https://docs.docker.com/engine/install/#supported-platforms) 选择并下载你使用的操作系统所对应的安装包，按照安装指南配置好 Docker。Docker 环境中含有 Scala 开发环境以及 Verilator 仿真器，但不包含 Vivado。如果你不需要烧板，那么使用 Docker 环境就可以完成所有实验以及软件测试了。
