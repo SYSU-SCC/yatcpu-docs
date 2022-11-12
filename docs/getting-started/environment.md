@@ -280,6 +280,8 @@ sudo apt install -y git \
 | libtinfo5               | Vivado 启动依赖                      |
 | md5sum                  | 安装包校验工具                       |
 
+安装完成之后，在任意目录执行 `git clone --recursive https://github.com/howardlau1999/yatcpu` 下载代码仓库。
+
 ### 安装 sbt 包管理器
 
 [sbt](https://packages.debian.org/sid/sbt) 目前仍然在 Debian 的[不稳定](https://www.debian.org/releases/sid/)版本中。对于不希望使用 sid 系统的同学，可以按照[文档](https://www.scala-sbt.org/1.x/docs/zh-cn/Installing-sbt-on-Linux.html#Ubuntu%E5%92%8C%E5%85%B6%E4%BB%96%E5%9F%BA%E4%BA%8EDebian%E7%9A%84%E5%8F%91%E8%A1%8C%E7%89%88)的指示下载安装。

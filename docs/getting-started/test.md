@@ -2,6 +2,8 @@
 
 By: [:material-github: wu-kan](https://github.com/wu-kan)
 
+以下两个测试，按照自己使用的工具，完成其中一个即可。
+
 ## IDE 操作
 
 以 Intellij IDEA IDE 为例，打开 `src/test` 目录下任意一个测试，在右边的代码编辑区域，在一些代码行的左边会显示绿色三角形图标，单击即可运行测试。

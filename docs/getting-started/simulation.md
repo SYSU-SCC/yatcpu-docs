@@ -39,9 +39,14 @@ By: [:material-github: howardlau1999](https://github.com/howardlau1999)
 
 如果想快速测试自己编写的程序，可以使用 Verilator 进行仿真，仿真的主函数已经写好，位于 `verilog/verilator/sim_main.cpp`。在第一次运行以及每次修改了 Chisel 3 代码后，需要在项目根目录执行命令生成 Verilog 文件：
 
-```bash
-sbt "runMain board.verilator.VerilogGenerator"
-```
+=== "命令行操作"
+    ```bash
+    sbt "runMain board.verilator.VerilogGenerator"
+    ```
+
+=== "IDEA 操作"
+    打开 `src/main/scala/board/verilator/Top.scala`，点击 `object VerilogGenerator extends App` 一行左边的绿色三角形运行即可。
+    或者可以在 "sbt shell" 窗口中，等 sbt 启动完毕后，执行 `runMain board.verilator.VerilogGenerator`。
 
 之后，进入 `verilog/verilator` 目录，执行以下命令生成仿真程序：
 
