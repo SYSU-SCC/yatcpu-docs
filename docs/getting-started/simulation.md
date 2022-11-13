@@ -94,9 +94,16 @@ obj_dir/VTop -instruction ~/yatcpu/src/main/resources/hello.asmbin \
 
 确保你的 PATH 路径中包含 Vivado 的安装目录，然后运行命令：
 
-```bash
-make vivado-sim
-```
+=== "Linux"
+    ```bash
+    make vivado-sim-basys3
+    ```
+    
+=== "Windows"
+    ```powershell
+    cd vivado/basys3
+    vivado -mode batch -source run_simulation.tcl
+    ```
 
 将会生成 `vivado/riscv-basys3/riscv-basys3.sim/sim_1/behav/xsim/dump.vcd` 文件。
 
