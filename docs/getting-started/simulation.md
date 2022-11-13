@@ -20,11 +20,12 @@ By: [:material-github: howardlau1999](https://github.com/howardlau1999)
     ```powershell
     $Env:WRITE_VCD=1; sbt test
     ```
-    命令提示符:
+    或者命令提示符:
     ```cmd
     set WRITE_VCD=1
     sbt test
     ```
+    sbt 命令不存在的话可以按照 IDEA 方式运行测试。
 
 === "Intellij IDEA"
     先点击右上角三角形左边的下拉菜单，点 “Edit configurations...”，如果没有就先运行一次测试。 
@@ -46,6 +47,7 @@ By: [:material-github: howardlau1999](https://github.com/howardlau1999)
 
 === "IDEA 操作"
     打开 `src/main/scala/board/verilator/Top.scala`，点击 `object VerilogGenerator extends App` 一行左边的绿色三角形运行即可。
+
     或者可以在 "sbt shell" 窗口中，等 sbt 启动完毕后，执行 `runMain board.verilator.VerilogGenerator`。
 
 之后，进入 `verilog/verilator` 目录，执行以下命令生成仿真程序：
@@ -98,21 +100,22 @@ obj_dir/VTop -instruction ~/yatcpu/src/main/resources/hello.asmbin \
     ```bash
     make vivado-sim-basys3
     ```
-    
+
 === "Windows"
     ```powershell
     cd vivado/basys3
     vivado -mode batch -source run_simulation.tcl
     ```
 
-将会生成 `vivado/riscv-basys3/riscv-basys3.sim/sim_1/behav/xsim/dump.vcd` 文件。
+将会生成 `vivado/basys3/riscv-basys3/riscv-basys3.sim/sim_1/behav/xsim/dump.vcd` 文件。
 
 ## 查看波形文件
+
 ### 使用 GTKWave 查看 VCD 格式波形
 
 不同软件生成的 VCD 文件路径不一样：
 
-- Vivado: `vivado/riscv-basys3/riscv-basys3.sim/sim_1/behav/xsim/dump.vcd`
+- Vivado: `vivado/basys3/riscv-basys3/riscv-basys3.sim/sim_1/behav/xsim/dump.vcd`
 - Verilator：`-vcd` 选项指定的文件路径
 - 测试时生成：`test_run_dir` 目录下的各个子目录中的 `.vcd` 文件
 
@@ -130,7 +133,7 @@ obj_dir/VTop -instruction ~/yatcpu/src/main/resources/hello.asmbin \
 
 ### 使用 Vivado 查看 WDB 格式波形
 
-你也可以打开 Vivado 来查看波形，Vivado 支持的格式为 `.wdb`，路径是 `vivado/riscv-basys3/riscv-basys3.sim/sim_1/behav/xsim/test_behav.wdb`。在启动 Vivado 后，选择菜单栏的 "Flow->Open Static Simulation..."，选择这个文件，然后点击 "Open" 按钮。
+你也可以打开 Vivado 来查看波形，Vivado 支持的格式为 `.wdb`，路径是 `vivado/basys3/riscv-basys3/riscv-basys3.sim/sim_1/behav/xsim/test_behav.wdb`。在启动 Vivado 后，选择菜单栏的 "Flow->Open Static Simulation..."，选择这个文件，然后点击 "Open" 按钮。
 
 ![vivado-1](images/vivado-1.png)
 
