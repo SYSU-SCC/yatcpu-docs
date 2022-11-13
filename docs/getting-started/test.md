@@ -28,7 +28,7 @@ sbt test
 sbt "testOnly riscv.singlecycle.InstructionDecoderTest"
 ```
 
-???+tips "设置代理"s
+???+tips "设置代理"
     如果下载失败或者网络不稳定，可以尝试设置代理。请根据自己的实际情况填写代理地址。
     ```bash
     export HTTPS_PROXY=http://127.0.0.1:1080
