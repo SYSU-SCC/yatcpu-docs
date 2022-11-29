@@ -2,8 +2,24 @@
 
 By: [:material-github: wu-kan](https://github.com/wu-kan)
 
+
+## 生成 Verilog 文件
+
+根据开发板型号，运行相应目录的 `Top.scala` 文件，生成的结果位于 `verilog/开发板名称` 目录下的 `Top.v`。
+
+=== "命令行操作"
+    ```bash
+    sbt "runMain board.开发板型号.VerilogGenerator"
+    ```
+
+=== "IDEA 操作"
+    打开 `src/main/scala/board/开发板型号/Top.scala`，点击 `object VerilogGenerator extends App` 一行左边的绿色三角形运行即可。
+
+    或者可以在 "sbt shell" 窗口中，等 sbt 启动完毕后，执行 `runMain board.开发板型号.VerilogGenerator`。
+
 ## 生成比特流二进制文件
 
+下面的教程以 `basys3` 开发板为例，其他开发板可以自行替换。
 
 执行下述指令，可以根据 `verilog/basys3/Top.v` 生成二进制文件 `vivado/basys3/riscv-basys3/riscv-basys3.runs/impl_1/Top.bit`。
 
