@@ -51,4 +51,10 @@ set(C_PROGRAMS tetris hello fibonacci quicksort)
 
 添加自己的 C 语言程序文件名，保存后然后重新运行一次编译脚本即可。
 
-编译出来的可执行文件放置在 `src/main/resources` 文件夹中，文件名后缀是 `.asmbin`。
+ELF 格式的文件可以使用 `llvm-objdump` 工具反汇编，在 `build` 文件夹中运行：
+
+```bash
+llvm-objdump -d --arch-name=riscv32 程序名
+```
+
+编译出来的 CPU 可执行文件放置在 `src/main/resources` 文件夹中，文件名后缀是 `.asmbin`。
