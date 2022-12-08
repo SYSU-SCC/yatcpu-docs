@@ -72,3 +72,19 @@ By: [:material-github: wu-kan](https://github.com/wu-kan)
 如果一切正常，在所有的开关处于下面的位置的时候，板上数码管应当显示 “SYSU” 的字母，如下图所示：
 
 ![SYSU on Board](images/board.png)
+
+## 串口连接
+
+Basys 3 的 USB 端口内置了 UART 转 USB 芯片，可以直接通过 USB 连接电脑。在完成 CPU 的 UART 中断处理后，我们可以使用串口的方式和 CPU 交互。
+
+你可以使用任意一种串口工具，这里以 Windows 下的 Xshell 为例：
+
+1. 打开 Xshell，点击左上角的 “新建” 按钮，新建一个会话。在“协议”中选择串口。
+
+![](./images/xshell-0.png)
+
+2. 在“串口”中选择你的串口设备，波特率选择 115200，数据位 8，停止位 1，校验位 None。端口号在每一台电脑上都不一样，如果选择之后连接不上，可以尝试其他端口。
+
+![](./images/xshell-1.png)
+
+3. 点击“确定”后，选择刚刚新建的会话，点击“连接”按钮，即可连接到 Basys 3。在通讯有数据交换的时候，USB 端口有指示灯会闪烁。
