@@ -8,6 +8,7 @@
 
 - Chisel 3 的基本语法和功能
 - Chisel 3 项目结构
+- 基本的反编译工具使用方法
 
 ## Chisel 3 的基本语法和功能
 
@@ -70,21 +71,26 @@ Chisel 3 严格意义上并不是 Verilog 的等价替代，而是一个生成�
 同学们在进行本次实验的过程中无需了解整个项目的所有文件，只需要专注于 `src/main/scala` 下的 `.scala` 代码文件即可。不过为了避免困惑，还是在此为大家介绍一下本项目的结构。
 ```
 - labx
-    - coremark              # cpu 性能测试
-    - csrc                  # 存放c语言文件
-    - project               # sbt的插件以及配置文件
+    - coremark              # CPU 性能测试
+    - csrc                  # 存放汇编语言和 C 语言源代码
+    - project               # sbt 的插件以及配置文件
     - src 
         - main
         - resources         # 资源文件
-            - scala         # chisel 3源代码 <--
+            - scala         # Chisel 3源代码 <--
         - test
-            - scala         # chisel 3测试代码 
-    - target                # sbt生成的文件
+            - scala         # Chisel 3测试代码 
+    - target                # sbt 生成的文件
     - test_run_dir          # 运行测试时生成的文件
-    - verilog               # verilog 代码
-    - vivado                # tcl脚本以及约束文件（用于自动化烧板）
+    - verilog               # Verilog 代码
+    - vivado                # tcl 脚本以及约束文件（用于自动化烧板）
     - build.sbt             # sbt 配置文件
 ```
+
+## 基本的反编译工具使用方法
+
+参考[编译和链接的过程](../tutorial/compile-and-link.md)以及[CMake 入门](../tutorial/cmake.md)，编写并编译自己的程序后，通过 `llvm-objdump` 工具反编译。
+
 ## 练习
 
 完成 [Chisel 3 在线实验](https://mybinder.org/v2/gh/freechipsproject/chisel-bootcamp/master) 的 `3.6_types` 以及之前的所有练习。

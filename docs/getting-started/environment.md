@@ -214,6 +214,9 @@ Scanning dependencies of target sb
 [100%] Built target sb
 ```
 
+!!! note "编译工具链的作用"
+    Clang 编译器用于在你的电脑上编译出可以在 CPU 上运行的 RV32I 二进制代码，如果后续实验过程中想要调试自己的程序，或者在运行测试的过程中提示缺少 `.asmbin` 文件，则按照本节方法运行一次编译即可重新生成所有的二进制文件。
+
 ### 安装 Verilator
 
 Chisel 3 自带的仿真器速度较慢，Verilator 通过将 Verilog 代码编译为 C++ 代码加速仿真。目前，Verilator 仅原生支持 Linux 系统，但我们可以使用 MSYS2 在 Windows 上使用 Verilator。
