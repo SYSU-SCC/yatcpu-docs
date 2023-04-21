@@ -77,9 +77,9 @@ Chisel 3 严格意义上并不是 Verilog 的等价替代，而是一个生成�
     - src 
         - main
         - resources         # 资源文件
-            - scala         # Chisel 3源代码 <--
+            - scala         # Chisel 3 源代码 <--
         - test
-            - scala         # Chisel 3测试代码 
+            - scala         # Chisel 3 测试代码 
     - target                # sbt 生成的文件
     - test_run_dir          # 运行测试时生成的文件
     - verilog               # Verilog 代码

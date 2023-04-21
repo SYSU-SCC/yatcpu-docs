@@ -273,6 +273,8 @@ CPUBundle 是 CPU 和内存等外设进行数据交换的通道。
 
 参考[编译和链接的过程](../tutorial/compile-and-link.md)以及[CMake 入门](../tutorial/cmake.md)，编写并编译自己的程序后，修改 `CPUTest` 中的 `InstructionROM` 的指令文件地址，即可运行你自己的程序。
 
+如果想要烧录自己的程序到 FPGA 板子上，只需要修改 `board/<板子型号>/Top.scala` 中的 `binaryFilename` 为你生成的程序二进制文件名即可。
+
 ## 提交 Autograder
 
 完成以上所有实验并通过相应测试后，请将以下文件打包为 `.zip` 文件，并上传到 Autograder 进行进一步的测试：

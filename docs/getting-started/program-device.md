@@ -89,7 +89,7 @@ Basys 3 的 USB 端口内置了 UART 转 USB 芯片，可以直接通过 USB 连
 
 在烧板后，可能会出现硬件运行和软件模拟不一致的情况。这时候可以使用硬件调试的方式来排查问题。硬件调试需要占用一定的板上资源，使用 Vivado 提供的 Integrated Logic Analyzer（ILA）模块来实现。
 
-在生成项目文件后，双击打开 `.xpr` 文件，启动 Vivado。在 Vivado 中，点击 "Create Block Design" 按钮，新建一个 Block Design。
+在生成项目文件后，双击打开 `.xpr` 文件，启动 Vivado。在 Vivado 中，点击 "Create Block Design" 按钮，新建一个 Block Design。（Pynq Z1 开发板对应的项目已经有 Block Design，直接点击 "Open Block Design" 按钮即可，也不需要添加顶层模块，脚本已经添加并连接好了）
 
 ![](./images/ila-0.png)
 

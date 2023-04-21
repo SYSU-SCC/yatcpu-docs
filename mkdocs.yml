@@ -29,6 +29,7 @@ nav:
   - 致谢: "acknowledgement/index.md"
   - 附录:
     - 简介: "appendix/index.md"
+    - 开发板移植: "appendix/porting.md"
 
 site_name: YatCPU 实验文档
 site_url: https://scc.sysu.tech/YatCPU-docs/
