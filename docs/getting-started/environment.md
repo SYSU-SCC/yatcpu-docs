@@ -77,14 +77,14 @@ docker run -it --rm -v yatcpu:/root/yatcpu howardlau1999/yatcpu
 
 ![images/idea-3.png](images/idea-3.png)
 
-点击图上的设置 JDK，选择下载 JDK。
+点击图上的设置 JDK，选择下载 JDK。建议选择 Temurin 19 或 17 版本。
 
 ![images/idea-4.png](images/idea-4.png)
 
 下载。如果没有弹出提示，请展开下方帮助按照指引手动下载 JDK。
 
 ???tips "手动下载 JDK"
-    如果没有弹出提示，按 ++ctrl+alt+shift+s++ 打开设置，选择左边的 Project（项目）选项，然后点击 JDK 下拉菜单，移动到添加 JDK 上，选择下载 JDK。
+    如果没有弹出提示，按 ++ctrl+alt+shift+s++ 打开设置，选择左边的 Project（项目）选项，然后点击 JDK 下拉菜单，移动到添加 JDK 上，选择下载 JDK。建议选择 Temurin 19 或 17 版本。
     
     ![download-jdk-0](images/download-jdk-0.png)
     
@@ -107,7 +107,7 @@ docker run -it --rm -v yatcpu:/root/yatcpu howardlau1999/yatcpu
 
 ![images/idea-7.png](images/idea-7.png)
 
-点下载，在跳出来的窗口中选择我们项目使用的 2.13.8 版本。
+点下载，在跳出来的窗口中选择我们项目使用的 2.13.10 版本。
 
 回到“添加 Scala 支持”窗口，在“使用库”中选中我们刚才下载的版本，点击确定。最后记得点击“加载 sbt 项目”加载项目配置。
 
