@@ -9,6 +9,7 @@ nav:
     - 配置合规性测试: "getting-started/compliance-test.md"
     - "配置 CoreMark 测试": "getting-started/coremark-benchmark.md"
     - 烧板验证: "getting-started/program-device.md"
+    - 硬件调试: "getting-started/hardware-debug.md"
   - 预备知识:
     - 简介: "tutorial/index.md"
     - 处理器架构: "tutorial/arch.md"

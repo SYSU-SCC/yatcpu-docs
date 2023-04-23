@@ -85,22 +85,3 @@ Basys 3 的 USB 端口内置了 UART 转 USB 芯片，可以直接通过 USB 连
 
 3. 点击“确定”后，选择刚刚新建的会话，点击“连接”按钮，即可连接到 Basys 3。在通讯有数据交换的时候，USB 端口有指示灯会闪烁。
 
-## 硬件调试
-
-在烧板后，可能会出现硬件运行和软件模拟不一致的情况。这时候可以使用硬件调试的方式来排查问题。硬件调试需要占用一定的板上资源，使用 Vivado 提供的 Integrated Logic Analyzer（ILA）模块来实现。
-
-在生成项目文件后，双击打开 `.xpr` 文件，启动 Vivado。在 Vivado 中，点击 "Create Block Design" 按钮，新建一个 Block Design。（Pynq Z1 开发板对应的项目已经有 Block Design，直接点击 "Open Block Design" 按钮即可，也不需要添加顶层模块，脚本已经添加并连接好了）
-
-![](./images/ila-0.png)
-
-然后，将 Sources 中的 Top 模块拖拽到 Block Design 中，运行 Run Block Automation 和 Run Connection Automation，将 Top 模块自动连接起来。之后，右键想要观察波形的信号，右键引脚，选择 Debug，之后再运行一次 Run Connection Automation，即可自动添加 ILA 模块并连接。
-
-![](./images/ila-1.png)
-
-之后右键 Sources 中的 Block Design，运行 Create HDL Wrapper，创建好对应的顶层模块后，按照正常流程生成比特流并烧入到开发板上。
-
-![](./images/ila-2.png)
-
-![](./images/ila-3.png)
-
-之后确保 Hardware Manager 中能够看到 Debug 核，就可以使用 Vivado 的硬件调试功能捕获实际运行的波形了。
