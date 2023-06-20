@@ -452,7 +452,18 @@ Verilator 4.219 devel rev UNKNOWN.REV (mod)
 
 ## macOS 配置指南
 
-建议使用 Homebrew 包管理器，执行：
+打开终端，执行以下命令安装 Homebrew（已经安装的可以跳过）：
+
+```bash
+export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.ustc.edu.cn/brew.git"
+export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.ustc.edu.cn/homebrew-core.git"
+export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles"
+export HOMEBREW_API_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles/api"
+
+/bin/bash -c "$(curl -fsSL https://mirrors.ustc.edu.cn/misc/brew-install.sh)"
+```
+
+完全退出终端，重新打开终端，执行以下命令安装依赖：
 
 ```bash
 brew install llvm cmake verilator sbt
