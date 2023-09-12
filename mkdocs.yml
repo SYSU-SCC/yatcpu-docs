@@ -25,6 +25,7 @@ nav:
     - "实验二 中断": "labs/lab2-interrupt.md"
     - "实验三 流水线 CPU": "labs/lab3-pipelined-cpu.md"
     - "实验四 总线": "labs/lab4-bus.md"
+    - "挑战实验一 运行操作系统": "labs/challenge1-running-os.md"
   - FAQ: "faq/index.md"
   - 参考资料: "references/index.md"
   - 致谢: "acknowledgement/index.md"
@@ -80,9 +81,9 @@ markdown_extensions:
   - footnotes
   - admonition
   - def_list
-  - toc:
-      permalink: true
-      slugify: !!python/name:pymdownx.slugs.uslugify
+  - markdown.extensions.toc:
+      slugify: !!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}}
+      permalink: "\ue157"
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
