@@ -34,8 +34,8 @@ nav:
     - 开发板移植: "appendix/porting.md"
 
 site_name: YatCPU 实验文档
-site_url: https://scc.sysu.tech/YatCPU-docs/
-repo_url: https://github.com/SYSU-SCC/YatCPU-docs
+site_url: https://yatcpu.sysu.tech
+repo_url: https://github.com/SYSU-SCC/yatcpu-docs.git
 copyright: |
   <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
 theme:
