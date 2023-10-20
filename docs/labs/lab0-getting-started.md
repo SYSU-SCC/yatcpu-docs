@@ -76,8 +76,8 @@ Chisel 3 严格意义上并不是 Verilog 的等价替代，而是一个生成�
     - project               # sbt 的插件以及配置文件
     - src 
         - main
-        - resources         # 资源文件
             - scala         # Chisel 3 源代码 <--
+        - resources         # 资源文件
         - test
             - scala         # Chisel 3 测试代码 
     - target                # sbt 生成的文件
@@ -87,10 +87,8 @@ Chisel 3 严格意义上并不是 Verilog 的等价替代，而是一个生成�
     - build.sbt             # sbt 配置文件
 ```
 
-## 基本的反编译工具使用方法
-
-参考[编译和链接的过程](../tutorial/compile-and-link.md)以及[CMake 入门](../tutorial/cmake.md)，编写并编译自己的程序后，通过 `llvm-objdump` 工具反编译。
-
 ## 练习
 
-完成 [Chisel 3 在线实验](https://mybinder.org/v2/gh/freechipsproject/chisel-bootcamp/master) 的 `3.6_types` 以及之前的所有练习。
+1. 参考[编译和链接的过程](../tutorial/compile-and-link.md)以及[CMake 入门](../tutorial/cmake.md)，了解如何将汇编或者 C 语言程序在自己电脑上编译为 RISC-V 程序。编写并编译自己的程序后，通过 `llvm-objdump` 工具反编译。探索 `llvm-objdump` 指令的参数，了解如何输出不同格式的反汇编结果。将反汇编结果与自己编写的程序进行对比，理解汇编指令与 C 语言程序的对应关系。
+
+2. 完成 [Chisel 3 在线实验](https://mybinder.org/v2/gh/freechipsproject/chisel-bootcamp/master) 的 `3.6_types` 以及之前的所有练习。

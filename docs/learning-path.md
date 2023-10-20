@@ -16,5 +16,6 @@
     - 然后按照[快速测试](./getting-started/test.md)测试自己的开发环境是否配置成功，需要能够通过测试
     - 按照[波形仿真](./getting-started/simulation.md)一节进行波形仿真，需要能够生成波形文件并使用相关软件打开
 5. 按照实验文档完成实验
+    - 先了解[实验工具的使用](./labs/lab0-getting-started.md)，然后按照顺序完成实验
     - 实验涉及到的代码在 [https://github.com/hrpccs/2022-fall-yatcpu-repo/](https://github.com/hrpccs/2022-fall-yatcpu-repo/) 下载，按照文档要求补充完整缺失的代码并通过测试即可
     - 提供的测试可能不全面，鼓励自己编写更多的测试用例保证正确性
