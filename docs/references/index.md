@@ -36,3 +36,5 @@ tinyriscv [liangkangnan/tinyriscv](https://gitee.com/liangkangnan/tinyriscv)
 riscv-boom [:material-github: riscv-boom/riscv-boom](https://github.com/riscv-boom/riscv-boom)
 
 rocket-chip [:material-github: chipsalliance/rocket-chip](https://github.com/chipsalliance/rocket-chip)
+
+UC Davis In-order CPU [:material-github: jlpteaching/dinocpu](https://github.com/jlpteaching/dinocpu)
