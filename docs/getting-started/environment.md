@@ -109,7 +109,7 @@ docker exec -d --user root -it chisel-jupyter chown -R bootcamp:bootcamp /coursi
 !!! note 重启 Docker 容器服务
     因为 Docker 中运行的容器会在宿主机关机后自动关闭，所以每次电脑重启后，下一次需要打开 YatCPU 的运行环境时都需要重复一遍上述的指令操作。
 
-    **你可以把上述命令打包成 .bat 脚本，可以便捷启动 YatCPU 的开发环境。**
+    你可以把上述命令打包成 .bat 脚本，可以便捷启动 YatCPU 的开发环境。
 
 ## Windows 配置方法
 
