@@ -18,20 +18,17 @@ By: [:material-github: wu-kan](https://github.com/wu-kan)、[:material-github: h
 
 ## Docker 配置方法
 
-!!! tips 如果你不知道 Docker
+!!!tips "如果你不知道 Docker"
     如果你不知道什么是 Docker，可以选择直接跳过这一节，按照下面的 Windows 或 Linux/WSL 配置方法在本机进行配置；也可以选择自行去学习 Docker 的内容，[**详情可以参考这篇博客**](https://docker.easydoc.net/)。
 
-### Docker 是什么
-Docker 是一个应用打包、分发、部署的工具。
+???tip "Docker 是什么？"
+    Docker 是一个应用打包、分发、部署的工具。
 
-**打包、分发、部署**
-- **打包：** 就是把你软件运行所需的依赖、第三方库、软件打包到一起，变成一个安装包。
-- **分发：** 你可以把你打包好的“安装包”上传到一个镜像仓库，其他人可以非常方便的获取和安装。
-- **部署：** 拿着“安装包”就可以一个命令运行起来你的应用，自动模拟出一摸一样的运行环境，不管是在 Windows/Mac/Linux。
+    - **打包**：就是把你软件运行所需的依赖、第三方库、软件打包到一起，变成一个安装包。
+    - **分发**：你可以把你打包好的“安装包”上传到一个镜像仓库，其他人可以非常方便的获取和安装。
+    - **部署**：拿着“安装包”就可以一个命令运行起来你的应用，自动模拟出一摸一样的运行环境，不管是在 Windows/Mac/Linux。
 
-所以使用 Docker 来配置 YatCPU 的开发环境是一件非常方便的事情。
-
-![image.png](images/idea-docker0.png)
+    所以使用 Docker 来配置 YatCPU 的开发环境是一件非常方便的事情。
 
 ### 拉取 YatCPU 镜像
 
@@ -44,13 +41,17 @@ docker run -it --rm howardlau1999/yatcpu
 sbt test
 ```
 
+另外提及一句，这个 Docker 镜像的 Dockerfile 在 https://github.com/howardlau1999/yatcpu-docker，欢迎有条件的同学前去了解。
+
 ![image.png](images/idea-docker1.png)
 
 ![image.png](images/idea-docker5.png)
 
 Docker 就会自动下载我们准备好的镜像、运行容器并执行测试。如果成功执行测试，你会看到类似这样的输出。
 
-> [success] Total time: 385 s (06:25), completed Dec 15, 2021, 8:45:25 PM
+```
+[success] Total time: 385 s (06:25), completed Dec 15, 2021, 8:45:25 PM
+```
 
 ### 挂载本地目录
 
@@ -75,12 +76,12 @@ docker run -it --rm -v {此处填 yatcpu 在宿主机上的存储路径}:/root/y
 
 通过前文的目录挂载，目前 YatCPU 的文件资源是存放在宿主机上，运行环境在 Docker 的镜像中，二者是分开的。所以当我们想要运行我们的工程项目时，我们需要在 Docker 提供的容器中运行；当我们需要修改工程项目的代码时，我们可以直接在本地更改。
 
-于是我们现在就可以在本地顺手的 IDE(比如 VScode) 上来做代码编辑，需要运行时就在Docker提供的运行环境中操作。
+于是我们现在就可以在本地顺手的 IDE(比如 VScode) 上来做代码编辑，需要运行时就在 Docker 提供的运行环境中操作。
 
-!!! warning 无法在本地运行 YatCPU 环境
+!!!warning "无法在本地运行 YatCPU 环境"
     因为运行环境存放在 Docker 提供的容器中，所以在本地无法正常运行 YatCPU 是**预期行为**。
 
-### 使用 Docker 配置本地 Chisel Bootcamp 运行环境
+### Docker 下的 Chisel Bootcamp 运行环境
 
 **Chisel-Bootcamp是什么**
 Chisel-Bootcamp 是 Github 上的一个 Chisel 教程，包含了基于 Jupytor 的 Chisel 教学，这篇文章讲一下基于 Docker 来配置 Bootcamp 环境，主要参考资料是 Bootcamp 在 github 上的安装教程。
@@ -100,13 +101,15 @@ docker exec -d --user root -it chisel-jupyter chown -R bootcamp:bootcamp /coursi
 
 然后你可以在 Docker 的容器输出内容中找到如下内容：
 
-> [I 13:29:41.871 NotebookApp] or http://127.0.0.1:8888/?token=??????
+```
+[I 13:29:41.871 NotebookApp] or http://127.0.0.1:8888/?token=******
+```
 
 发现这是一个网页链接，在本地浏览器打开该网页便可以在本地运行 Chisel-Bootcamp 了。
 
 ![image.png](images/idea-docker4.png)
 
-!!! note 重启 Docker 容器服务
+!!!note "重启 Docker 容器服务"
     因为 Docker 中运行的容器会在宿主机关机后自动关闭，所以每次电脑重启后，下一次需要打开 YatCPU 的运行环境时都需要重复一遍上述的指令操作。
 
     你可以把上述命令打包成 .bat 脚本，可以便捷启动 YatCPU 的开发环境。
