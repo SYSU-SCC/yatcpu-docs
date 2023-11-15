@@ -1,6 +1,6 @@
 # 开发环境
 
-By: [:material-github: wu-kan](https://github.com/wu-kan)、[:material-github: howardlau1999](https://github.com/howardlau1999)
+By: [:material-github: wu-kan](https://github.com/wu-kan)、[:material-github: howardlau1999](https://github.com/howardlau1999)、[:material-github: Tokisakix](https://github.com/Tokisakix)
 
 本项目经过测试且可用的操作系统为：
 
@@ -13,39 +13,170 @@ By: [:material-github: wu-kan](https://github.com/wu-kan)、[:material-github: h
 
 我们提供两种风格的开发环境配置方案：
 
-1. 对于喜欢使用 IDE 集成环境的同学，推荐使用 Windows 配置方法。
+1. 对于习惯使用 IDE 集成环境的同学，推荐使用 Windows 配置方法。
 2. 对于喜欢使用终端+代码编辑器组合的同学，推荐使用 Linux/WSL 配置方法，或使用我们准备好的 Docker 环境。
 
 ## Docker 配置方法
 
-!!!tips "如果你不了解什么是 Docker"
-    如果你不知道什么是 Docker，可以直接跳过这一节，按照下面的 Windows 或 Linux/WSL 配置方法在本机进行配置。
+!!!tips "如果你不知道 Docker"
+    如果你不知道什么是 Docker，可以选择直接跳过这一节，按照下面的 Windows 或 Linux/WSL 配置方法在本机进行配置；也可以选择自行去学习 Docker 的内容，[**详情可以参考这篇博客**](https://docker.easydoc.net/)。
 
-该方法适用于 Windows、Linux 和 macOS 系统。
+???tip "Docker 是什么？"
+    Docker 是一个应用打包、分发、部署的工具。
 
-首先到 [Docker 官方网站](https://docs.docker.com/engine/install/#supported-platforms) 选择并下载你使用的操作系统所对应的安装包，按照安装指南配置好 Docker。Docker 环境中含有 Scala 开发环境以及 Verilator 仿真器，但不包含 Vivado。如果你不需要烧板，那么使用 Docker 环境就可以完成所有实验以及软件测试了。
+    - **打包**：就是把你软件运行所需的依赖、第三方库、软件打包到一起，变成一个安装包。
+    - **分发**：你可以把你打包好的“安装包”上传到一个镜像仓库，其他人可以非常方便的获取和安装。
+    - **部署**：拿着“安装包”就可以一个命令运行起来你的应用，自动模拟出一摸一样的运行环境，不管是在 Windows/Mac/Linux。
 
-之后，只需要运行
+    所以使用 Docker 来配置 YatCPU 的开发环境是一件非常方便的事情。
 
-```bash
+### 拉取 YatCPU 镜像
+
+首先到 Docker 官方网站 选择并下载你使用的操作系统所对应的安装包，按照安装指南配置好 Docker。Docker 环境中含有 Scala 开发环境以及 Verilator 仿真器，但不包含 Vivado。如果你不需要烧板，那么使用 Docker 环境就可以完成所有实验以及软件测试了。
+
+作为 Docker 的使用者，我们只需要运行：
+
+```cmd
 docker run -it --rm howardlau1999/yatcpu
 sbt test
 ```
 
-Docker 会自动下载我们准备好的镜像并运行容器。如果成功执行，你会看到类似这样的输出。
+另外提及一句，这个 Docker 镜像的 Dockerfile 在 https://github.com/howardlau1999/yatcpu-docker，欢迎有条件的同学前去了解。
+
+![image.png](images/idea-docker1.png)
+
+![image.png](images/idea-docker5.png)
+
+Docker 就会自动下载我们准备好的镜像、运行容器并执行测试。如果成功执行测试，你会看到类似这样的输出。
 
 ```
 [success] Total time: 385 s (06:25), completed Dec 15, 2021, 8:45:25 PM
 ```
 
-Docker 中的 YatCPU 代码可能不是最新版，且容器结束运行之后所有修改都将丢失，如果你需要完成实验，需要先将代码仓库克隆到本机，然后在运行 Docker 容器时挂载本机目录：
+### 挂载本地目录
 
-```
+Docker 中的 YatCPU 代码可能不是最新版，且容器结束运行之后所有修改都将丢失，如果你需要完成实验，需要先将代码仓库克隆到本机，然后在运行 Docker 容器时挂载本机目录，直接把宿主机目录映射到容器内，适合挂代码目录和配置文件。Docker 的容器部分文件系统会直接创建在宿主机，所以删除或重启容器不会丢失容器数据。
+
+```cmd
 git clone --recursive https://github.com/howardlau1999/yatcpu
-docker run -it --rm -v yatcpu:/root/yatcpu howardlau1999/yatcpu
+docker run -it --rm -v {此处填 yatcpu 在宿主机上的存储路径}:/root/yatcpu howardlau1999/yatcpu
 ```
 
-按照这种方法在容器中所做的修改将保存到本机文件夹，反之同理。
+**你可以把上述内容打包成一个 .bat 脚本，可以便捷启动。**
+
+![image.png](images/idea-docker2.png)
+
+你可以在 Docker 界面点开 YatCPU 的容器并查看容器里的文件目录。按照这种方法在容器中所做的修改将保存到本机文件夹，反之同理。
+
+### 文件资源与运行环境分离
+
+**文件资源：** 文件资源是指工程项目在宿主机的物理表现形式。
+
+**运行环境：** 运行环境是指工程项目运行时所必要的一些配套资源，比如编译器、解释器环境。
+
+通过前文的目录挂载，目前 YatCPU 的文件资源是存放在宿主机上，运行环境在 Docker 的镜像中，二者是分开的。所以当我们想要运行我们的工程项目时，我们需要在 Docker 提供的容器中运行；当我们需要修改工程项目的代码时，我们可以直接在本地更改。
+
+于是我们现在就可以在本地顺手的 IDE(比如 VScode) 上来做代码编辑，需要运行时就在 Docker 提供的运行环境中操作。
+
+!!!warning "无法在本地运行 YatCPU 环境"
+    因为运行环境存放在 Docker 提供的容器中，所以在本地无法正常运行 YatCPU 是**预期行为**。
+
+### Docker 下的 Chisel Bootcamp 运行环境
+
+**Chisel-Bootcamp是什么**
+Chisel-Bootcamp 是 Github 上的一个 Chisel 教程，包含了基于 Jupytor 的 Chisel 教学，这篇文章讲一下基于 Docker 来配置 Bootcamp 环境，主要参考资料是 Bootcamp 在 github 上的安装教程。
+
+**启动命令**
+
+确保你已经启动 Docker 引擎，在终端输入以下内容：
+
+```cmd
+docker run -d --name chisel-jupyter -it --rm -p 8888:8888 ucbbar/chisel-bootcamp
+docker exec -d --user root -it chisel-jupyter chown -R bootcamp:bootcamp /coursier_cache
+```
+
+**你可以把上述内容打包成一个 .bat 脚本，可以便捷启动。**
+
+![image.png](images/idea-docker3.png)
+
+然后你可以在 Docker 的容器输出内容中找到如下内容：
+
+```
+[I 13:29:41.871 NotebookApp] or http://127.0.0.1:8888/?token=******
+```
+
+发现这是一个网页链接，在本地浏览器打开该网页便可以在本地运行 Chisel-Bootcamp 了。
+
+![image.png](images/idea-docker4.png)
+
+!!!note "重启 Docker 容器服务"
+    因为 Docker 中运行的容器会在宿主机关机后自动关闭，所以每次电脑重启后，下一次需要打开 YatCPU 的运行环境时都需要重复一遍上述的指令操作。
+
+    你可以把上述命令打包成 .bat 脚本，可以便捷启动 YatCPU 的开发环境。
+
+## Dev Container 环境配置
+
+使用 Docker + Dev Container 配置开发环境比较简单，而且也经过了测试，所以，我们推荐在 Windows 上直接使用 Dev Container 来设置开发环境。
+
+按照安装指南配置好 Dev Container 环境，环境中含有 Scala 开发环境以及 Verilator 仿真器，但不包含 Vivado。如果你不需要烧板，那么使用 Dev Container 环境就可以完成所有实验以及软件测试了。
+
+### 配置开发容器
+
+1. **软件安装**
+
+    安装 VSCode，直接在[官网下载](https://code.visualstudio.com/)
+
+    安装 Docker，直接在[官网下载](https://www.docker.com/)，你可以参照这个[视频教程](https://docker.easydoc.net/doc/81170005/cCewZWoN/lTKfePfP)配置
+
+2. **安装 Dev Containers 插件**
+
+    在 VSCode 的扩展处搜索 Dev Containers，下载安装
+
+    ![image](images/devcontainer1.png)
+
+3. **编写配置文件**
+
+    在工程文件夹中修改 <code>yatcpu/.devcontainer/devcontainer.json</code> 的内容，如果没有此文件请创建此文件，并修改为以下内容
+
+    ```
+    {
+        "name": "YatCPU",
+        "build": {
+            "dockerfile": "Dockerfile"
+        }
+    }
+    ```
+
+    在工程文件夹中修改 <code>yatcpu/.devcontainer/Dockerfile</code> 的内容，如果没有此文件请创建此文件，并修改为以下内容
+
+    ```
+    FROM howardlau1999/yatcpu
+    ```
+
+4. **使用 Dev Containers 打开项目**
+
+    我们可以按 VSCode 左下角的蓝色按钮来运行 Dev Containers:
+
+    在上方的运行选项中选择在容器中重新打开，这个命令会让 Dev container 自动根据 <code>devcontainer.json</code> 里的配置信息来创建 Docker 环境
+
+    ![image](images/devcontainer2.png)
+
+    如果你是第一次在容器中打开，你可能需要十几分钟的时间等待容器配置完毕，如果在配置过程中发生异常，请检查你的网络情况后再次运行
+
+5. **运行测试**
+
+    上述步骤完成后，我们就可以像在 Dev container 为我们配置好的开发环境中运行、调试代码了。
+
+    新建终端输入 <code>sbt test</code>，期望你有如下输出
+
+    ![image](images/devcontainer3.png)
+
+    ```bash
+    [info] All tests passed.
+    [success] Total time: 181 s (03:01), completed Nov 14, 2023, 3:24:02 PM
+    ```
+
+    后续当你需要再次启动开发环境时，按相同的步骤运行 Dev Containers 即可，此时 Dev Containers 会自动使用之前已经配置好的环境，不需要再次花费十几分钟等待环境配置
 
 ## Windows 配置方法
 
