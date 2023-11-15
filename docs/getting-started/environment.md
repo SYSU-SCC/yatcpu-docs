@@ -13,7 +13,7 @@ By: [:material-github: wu-kan](https://github.com/wu-kan)、[:material-github: h
 
 我们提供两种风格的开发环境配置方案：
 
-1. 对于喜欢使用 IDE 集成环境的同学，推荐使用 Windows 配置方法。
+1. 对于习惯使用 IDE 集成环境的同学，推荐使用 Windows 配置方法。
 2. 对于喜欢使用终端+代码编辑器组合的同学，推荐使用 Linux/WSL 配置方法，或使用我们准备好的 Docker 环境。
 
 ## Docker 配置方法
@@ -113,6 +113,70 @@ docker exec -d --user root -it chisel-jupyter chown -R bootcamp:bootcamp /coursi
     因为 Docker 中运行的容器会在宿主机关机后自动关闭，所以每次电脑重启后，下一次需要打开 YatCPU 的运行环境时都需要重复一遍上述的指令操作。
 
     你可以把上述命令打包成 .bat 脚本，可以便捷启动 YatCPU 的开发环境。
+
+## Dev Container 环境配置
+
+使用 Docker + Dev Container 配置开发环境比较简单，而且也经过了测试，所以，我们推荐在 Windows 上直接使用 Dev Container 来设置开发环境。
+
+按照安装指南配置好 Dev Container 环境，环境中含有 Scala 开发环境以及 Verilator 仿真器，但不包含 Vivado。如果你不需要烧板，那么使用 Dev Container 环境就可以完成所有实验以及软件测试了。
+
+### 配置开发容器
+
+1. **软件安装**
+
+    安装 VSCode，直接在[官网下载](https://code.visualstudio.com/)
+
+    安装 Docker，直接在[官网下载](https://www.docker.com/)，你可以参照这个[视频教程](https://docker.easydoc.net/doc/81170005/cCewZWoN/lTKfePfP)配置
+
+2. **安装 Dev Containers 插件**
+
+    在 VSCode 的扩展处搜索 Dev Containers，下载安装
+
+    ![image](images/devcontainer1.png)
+
+3. **编写配置文件**
+
+    在工程文件夹中修改 <code>yatcpu/.devcontainer/devcontainer.json</code> 的内容，如果没有此文件请创建此文件，并修改为以下内容
+
+    ```
+    {
+        "name": "YatCPU",
+        "build": {
+            "dockerfile": "Dockerfile"
+        }
+    }
+    ```
+
+    在工程文件夹中修改 <code>yatcpu/.devcontainer/Dockerfile</code> 的内容，如果没有此文件请创建此文件，并修改为以下内容
+
+    ```
+    FROM howardlau1999/yatcpu
+    ```
+
+4. **使用 Dev Containers 打开项目**
+
+    我们可以按 VSCode 左下角的蓝色按钮来运行 Dev Containers:
+
+    在上方的运行选项中选择在容器中重新打开，这个命令会让 Dev container 自动根据 <code>devcontainer.json</code> 里的配置信息来创建 Docker 环境
+
+    ![image](images/devcontainer2.png)
+
+    如果你是第一次在容器中打开，你可能需要十几分钟的时间等待容器配置完毕，如果在配置过程中发生异常，请检查你的网络情况后再次运行
+
+5. **运行测试**
+
+    上述步骤完成后，我们就可以像在 Dev container 为我们配置好的开发环境中运行、调试代码了。
+
+    新建终端输入 <code>sbt test</code>，期望你有如下输出
+
+    ![image](images/devcontainer3.png)
+
+    ```bash
+    [info] All tests passed.
+    [success] Total time: 181 s (03:01), completed Nov 14, 2023, 3:24:02 PM
+    ```
+
+    后续当你需要再次启动开发环境时，按相同的步骤运行 Dev Containers 即可，此时 Dev Containers 会自动使用之前已经配置好的环境，不需要再次花费十几分钟等待环境配置
 
 ## Windows 配置方法
 
